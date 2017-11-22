@@ -80,3 +80,8 @@ function checkAnnouncment(){
 	}
 	return $html;
 }
+
+function trimSpace($str){
+	$st = str_replace(' ', '', $str);
+	return $st;
+}

@@ -5,6 +5,7 @@ $(document).ready(function() {
  	$('.section').each(function(el, i) {
  		namaAnchor[el] = $(this).data('nama')
  	});
+ 	console.log(namaAnchor)
  	var isInvert = false;
  	var interval = [];
 	if ($("#fullpage").length == 1){

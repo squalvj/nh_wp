@@ -374,7 +374,18 @@ body
 	.img-right
 		img
 			width 100%
-	&.invert
+	&.putih
+		h2
+			color white !important
+		li.active
+			a
+				color white !important
+				border-bottom 1px solid white !important
+		a
+			color white !important
+		p
+			color white !important
+	&.invert,&.putih
 		justify-content space-around
 		h2
 			color $black
@@ -599,7 +610,7 @@ body
 			transition-delay 1s
 		&.active
 			width 38px
-	&.invert
+	&.invert,&.putih
 		span
 			background black
 
@@ -676,7 +687,7 @@ body
 			display inline
 // --------------------------------------------------------------------
 @media (min-width: 1200px)
-	.items-left-right.invert 
+	.items-left-right.invert.putih 
 		.tab-container 
 			li
 				
@@ -741,7 +752,7 @@ body
 		margin-bottom 0
 	.items-left-right
 		margin 120px 0 120px
-		&.invert
+		&.invert,&.putih
 			.tab-container
 				margin-left -10px
 				li
