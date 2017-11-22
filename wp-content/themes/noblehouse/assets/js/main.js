@@ -91,6 +91,7 @@ $(document).ready(function() {
 		  // 		console.log('render')
 		 	// 	initBulletSlide()
 				// startAutoScroll()
+				console.log("RENDER")
 			},
 			onSlideLeave: function( anchorLink, index, slideIndex, direction, nextSlideIndex){
 				var parent = $(this).parent();

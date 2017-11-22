@@ -14,18 +14,8 @@
                 <p><?= $row['content_tab']; ?></p>
             </div>
         <?php $i++; endforeach; endif;?>
-        <!-- <div class="tab-pane fade active in" id="floor1">
-            <p>A spacious floor plate totaling 50,000 sqm2 , with a choice of Low Zone and High Zone location each served by high speed lifts, gives ample selection for the location of your office.
-            </p>
-            <p class="footer-content">
-                1,741 sqm semi gross floorplate<br>
-                divided into 6 office areas <br>
-                ranging from 225 to 360 sqm semi gross
-            </p>
-        </div>
-        -->
     </div>
 </div>
 <div class="item-right img-right">
-   <img src="<?= get_template_directory_uri() ?>/assets/img/floor1.svg">
+   <img src="<?= $field['image_right']; ?>">
 </div>
