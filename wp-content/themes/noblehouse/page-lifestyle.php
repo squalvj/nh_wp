@@ -11,7 +11,7 @@
 ?>
     <?php get_template_part( 'nav/nav', 'side' ); ?>
     <div class="main">
-        <div id="fullpage-office" class="fullpg">
+        <div id="fullpage-lifestyle" class="fullpg">
             <?php if ( $query->have_posts() ) : ?>
                 <?php while( $query->have_posts() ) : $query->the_post();?>
                     <?php $layout = get_field("layout",get_the_ID()); $field = get_fields(get_the_ID())?>

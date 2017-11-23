@@ -91,13 +91,6 @@ $(document).ready(function() {
 		 	// 	initBulletSlide()
 				// startAutoScroll()
 				console.log("RENDER")
-			},
-			onSlideLeave: function( anchorLink, index, slideIndex, direction, nextSlideIndex){
-				var parent = $(this).parent();
-				addIndexSlide(parent);
-				setTimeout(function(){
-					setBulletSlide(parent)
-				})
 			}
 		});
 	}
@@ -148,28 +141,28 @@ $(document).ready(function() {
 	// 	}
 	// }
 
+	function fadeIns(el){
+		TweenMax.to(el, 1, {opacity:1})
+	}
+	function fadeOuts(el){
+		TweenMax.to(el, 1, {opacity:0})
+	}
+
 	function initBulletSlide(){
 		var bullet = $(".bullet-nav")
-		var parent = bullet.parent()
-		var slide = [];
-		var anc = [[],[]];
+		var parent = bullet.siblings('.container').find('.gallery-slider').children()
+		TweenMax.set(parent, {opacity:0})
+		TweenMax.set(parent.first(), {opacity:1})
+		var a = 0;
+		parent.each(function(index, el) {
+			$(this).attr('data-index', index)
+		});
 		for (var i = 0; i < parent.length; i++){
-			slide[i] = parent.eq(i).find('.slide')
-			anc[i][''] = i
-			for (var l = 0; l < parent.eq(i).find('.slide').length; l++){
-				anc[i][l] = parent.eq(i).find('.slide').eq(l).data('anchor')
-				//console.log(parent.eq(i).find('.slide').eq(l).data('anchor'))
-			}
+			bullet.append('<a class="bullet-child" data-index="'+i+'"></a>')
+			console.log(i)
 		}
-		for (var k = 0; k < slide.length; k++){
-			var bulletInside = slide[k].closest('.section').find('.bullet-nav')
-			for (var z = 0; z < slide[k].length; z++){
-				var it2 = k;
-				var anchor = slide[k].closest('.section').data('anchor')
-				// bulletInside.append('<a class="bullet-child" data-interval="'+ it2 +'" href="#'+anchor+'/slide'+ it +'"></a>')
-				bulletInside.append('<a class="bullet-child" href="#'+anchor+'/'+ anc[k][z] + '" data-interval="'+ it2 +'"></a>')
-			}
-		}
+		var bfirst = $(".bullet-nav .bullet-child:first-child")
+		bfirst.addClass('active')
 	}
 
 	function initBulletRight(el, eq){
@@ -184,14 +177,12 @@ $(document).ready(function() {
 
 	function startAutoScroll(){
 		var bulletnav = $(".bullet-nav")
-		var bfirst = $(".bullet-nav .bullet-child:first-child")
-		bfirst.addClass('active')
+		
 		for (var i = 0; i < bulletnav.length; i++){
 			var container = bulletnav.eq(i)
 			var section = container.closest('.section')
 			startauto(interval,i, container, section)
 		}
-		
 	}
 
 	function startauto(el, index, container, section){
@@ -206,7 +197,14 @@ $(document).ready(function() {
 				}
 				bullet.removeClass('active')
 				next.addClass('active')
-				$.fn.fullpage.moveSlideRight();
+				var img = section.find('.gallery-slider').children();
+				var indexEl = next.data('index')
+				fadeOuts(img)
+				img.each(function(index, el) {
+					if ($(this).data('index') == indexEl){
+						fadeIns($(this))
+					}
+				});
 			}
 		}, 7000));
 	}
@@ -215,7 +213,6 @@ $(document).ready(function() {
 		parent.children('.slide').each(function(index, el) {
 			$(this).attr('data-index', index+1);
 		});
-
 	}
 
 	function stopAutoScroll(i){
@@ -250,13 +247,18 @@ $(document).ready(function() {
 
 	$(".bullet-nav").on('click', '.bullet-child', function(event) {
 		var parent = $(this).parent('.bullet-nav')
-		var intervals = $(this).data('interval')
+		var indexEl = parseInt($(this).data('index'));
+		var img = parent.siblings('.container').find('.gallery-slider').children();
+		fadeOuts(img)
+		img.each(function(index, el) {
+			if ($(this).data('index') == indexEl){
+				fadeIns($(this))
+			}
+		});
 		parent.find('.bullet-child').removeClass('active')
 		$(this).addClass('active')
-		stopAutoScroll(intervals)
 	});
-	// kocak
-	//var i =false
+
 	$('[data-toggle="collapse"]').click(function() {
 		var parent = $(this).closest('.item-left')
 		parent.find('.collapse.in').collapse('hide')

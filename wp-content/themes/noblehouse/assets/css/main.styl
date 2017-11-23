@@ -112,6 +112,7 @@ body
 		width 100%
 		object-fit cover
 		object-position top center
+		position absolute
 	&:after
 		position absolute
 		content ''
@@ -138,7 +139,6 @@ body
 .wrapper-content
 	position relative
 	z-index 2
-	min-height 500px
 
 // sidenav
 .side-nav
@@ -591,6 +591,8 @@ body
 		-ms-transition: all .25s ease
 		-o-transition: all .25s ease
 		transition: all .25s ease
+		&:hover
+			cursor pointer
 		&.active
 			-webkit-transform: scale(1.5);
 			-moz-transform: scale(1.5);

@@ -1,13 +1,13 @@
 <?php global $field; ?>
 <div class="section" data-nama="<?= trimSpace($field['header']); ?>">	
- 	<?php if ($field['background_page']): ?>
+ 	<?php if ($field['background_standard']): ?>
         <div class="bg-gradient-left-right">
-            <img src="<?= $field['background_page'] ?>">
+            <img src="<?= $field['background_standard'] ?>">
         </div>
     <?php endif; ?>
     <div class="container">
         <div class="wrapper-konten">
-            <div class="items-left-right <?php echo ($field['background_page'] ? 'putih' : 'invert'); ?>">
+            <div class="items-left-right <?php echo ($field['background_standard'] ? 'putih' : 'invert'); ?>">
 				<?php if ($field['standard_type'] == "Tab"): ?>
 					<?= get_template_part('office-part/part/tab'); ?>
 				<?php elseif ($field['standard_type'] == "Accordion"): ?>
