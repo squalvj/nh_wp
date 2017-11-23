@@ -14,9 +14,9 @@
         <div id="fullpage-lifestyle" class="fullpg">
             <?php if ( $query->have_posts() ) : ?>
                 <?php while( $query->have_posts() ) : $query->the_post();?>
-                    <?php $layout = get_field("layout",get_the_ID()); $field = get_fields(get_the_ID())?>
-                    <?php if ($layout != "Slider"): ?>
-                         <?= get_template_part('office-part/office', 'standard'); ?>
+                    <?php $layout = get_field("layout",get_the_ID()); $field = get_fields(get_the_ID()); ?>
+                    <?php if ($layout == "Standard"): ?>
+                         <?= get_template_part('lifestyle-part/lifestyle', 'standard'); ?>
                     <?php else: ?>
                         <?= get_template_part('office-part/office', 'slider'); ?>
                     <?php endif; ?>

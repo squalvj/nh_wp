@@ -95,6 +95,54 @@ $(document).ready(function() {
 		});
 	}
 
+	if ($("#fullpage-lifestyle").length == 1){
+		$('#fullpage-lifestyle').fullpage({
+			scrollingSpeed: 2500,
+			css3: true,
+			scrollOverflow: true,
+			// anchors: ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine','ten'],
+
+			//slidesNavigation: false,
+			anchors: namaAnchor,
+			controlArrows: false,
+			//slidesNavPosition: 'bottom',
+			onLeave: function(index, nextIndex, direction) {
+			    var el = $(this);
+			    var child = el.find('.items-left-right').children()
+			    var nextEl = el.parent().children().eq(nextIndex-1)
+			    ilangStagger(child,.5)
+			    var childrenNext = nextEl.find('.items-left-right').children()
+			    opacity(childrenNext)
+			   	munculStagger(childrenNext,.3)
+			   	// if (nextIndex == 1){
+			   	// 	stopAutoScroll();
+			   	// }
+			   	changeBulletNav(nextIndex)
+			   	var nextEl = $(".section").eq(nextIndex-1)
+			   	var invert = nextEl.find('.invert')
+			   	if (invert.length){
+			   		fadeInOut($(".top-left").first(), $(".top-left").last())
+			   		right($(".top-right").first(),$(".top-right").last() )
+			   		opacity2($(".bottom-left").first(), $(".bottom-left").last())
+			   		opacity2($(".bottom-right").first(), $(".bottom-right").last())
+			   		$(".bullet-right").addClass('invert')
+			   	}
+			   	else{
+			   		fadeInOut($(".top-left").last(), $(".top-left").first())
+			   		right($(".top-right").last(),$(".top-right").first() )
+			   		opacity2($(".bottom-left").last(), $(".bottom-left").first())
+			   		opacity2($(".bottom-right").last(), $(".bottom-right").first())
+			   		$(".bullet-right").removeClass('invert')
+			   	}
+		  	},
+		  	afterLoad: function(anchorLink, index) {
+		  		
+		  	},
+	  	 	afterRender: function () {
+			}
+		});
+	}
+
 	function setBulletSlide(el){
 		var index = parseInt(el.find('.active').data('index'))
 		var bullet = el.closest('.container').siblings('.bullet-nav')
@@ -150,20 +198,57 @@ $(document).ready(function() {
 
 	function initBulletSlide(){
 		var bullet = $(".bullet-nav")
-		var parent = bullet.siblings('.container').find('.gallery-slider').children()
-		TweenMax.set(parent, {opacity:0})
-		TweenMax.set(parent.first(), {opacity:1})
-		var a = 0;
-		parent.each(function(index, el) {
-			$(this).attr('data-index', index)
-		});
+		var parent = bullet.siblings('.container').find('.gallery-slider')
+		var gallery = [];
+		var child = [];
 		for (var i = 0; i < parent.length; i++){
-			bullet.append('<a class="bullet-child" data-index="'+i+'"></a>')
-			console.log(i)
+			gallery[i] = parent.eq(i);
 		}
+		
+		for (var i = 0; i < gallery.length; i++){
+			var child = gallery[i].children();
+			gallery[i].children().each(function(index, el) {
+				$(this).attr('data-index', index)
+				
+			});
+			TweenMax.set(gallery[i].children(), {opacity:0})
+			TweenMax.set(gallery[i].children().first(), {opacity:1})
+			var bulletInside = gallery[i].closest('.container').siblings('.bullet-nav')
+			for (var z = 0; z < child.length; z++){
+				bulletInside.append('<a class="bullet-child" data-index="'+z+'"></a>')
+			}
+		}
+		
+			
+		// for (var i = 0; i < child.length; i++){
+		// 	bullet.append('<a class="bullet-child" data-index="'+i+'"></a>')
+		// }
 		var bfirst = $(".bullet-nav .bullet-child:first-child")
 		bfirst.addClass('active')
 	}
+
+	// function initBulletSlide(){
+	// 	var bullet = $(".bullet-nav")
+	// 	var child = bullet.siblings('.container').find('.gallery-slider').children()
+	// 	var parent = bullet.siblings('.container').find('.gallery-slider')
+	// 	var gallery = [];
+	// 	console.log(parent.length)
+	// 	for (var i = 0; i < parent.length; i++){
+	// 		gallery[i] = parent.eq(i);
+	// 	}
+	// 	// TweenMax.set(parent, {opacity:0})
+	// 	// TweenMax.set(parent.first(), {opacity:1})
+
+	// 	child.each(function(index, el) {
+	// 		$(this).attr('data-index', index)
+	// 	});
+	// 	console.log(gallery)
+	// 	for (var i = 0; i < child.length; i++){
+	// 		bullet.append('<a class="bullet-child" data-index="'+i+'"></a>')
+	// 	}
+	// 	var bfirst = $(".bullet-nav .bullet-child:first-child")
+	// 	bfirst.addClass('active')
+	// }
 
 	function initBulletRight(el, eq){
 		var count = el.length
