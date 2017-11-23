@@ -5,7 +5,6 @@ $(document).ready(function() {
  	$('.section').each(function(el, i) {
  		namaAnchor[el] = $(this).data('nama')
  	});
- 	console.log(namaAnchor)
  	var isInvert = false;
  	var interval = [];
 	if ($("#fullpage").length == 1){
@@ -107,8 +106,6 @@ $(document).ready(function() {
 		var index = parseInt(el.find('.active').data('index'))
 		var bullet = el.closest('.container').siblings('.bullet-nav')
 		bullet.find('.bullet-child').removeClass('active')
-		console.log(bullet.children().eq(index-1))
-		console.log(index)
 		bullet.children().eq(index-1).addClass('active')
 	}
 
@@ -126,6 +123,30 @@ $(document).ready(function() {
 		TweenMax.to(el, 1, {opacity:0,delay:1,display:'none'})
 		TweenMax.to(el2, 1, {opacity:1,delay:1,display:'flex'})
 	}
+
+	// function initBulletSlide(){
+	// 	var bullet = $(".bullet-nav")
+	// 	var parent = bullet.parent()
+	// 	var slide = [];
+	// 	var anc = [[],[]];
+	// 	for (var i = 0; i < parent.length; i++){
+	// 		slide[i] = parent.eq(i).find('.slide')
+	// 		anc[i][''] = i
+	// 		for (var l = 0; l < parent.eq(i).find('.slide').length; l++){
+	// 			anc[i][l] = parent.eq(i).find('.slide').eq(l).data('anchor')
+	// 			//console.log(parent.eq(i).find('.slide').eq(l).data('anchor'))
+	// 		}
+	// 	}
+	// 	for (var k = 0; k < slide.length; k++){
+	// 		var bulletInside = slide[k].closest('.section').find('.bullet-nav')
+	// 		for (var z = 0; z < slide[k].length; z++){
+	// 			var it2 = k;
+	// 			var anchor = slide[k].closest('.section').data('anchor')
+	// 			// bulletInside.append('<a class="bullet-child" data-interval="'+ it2 +'" href="#'+anchor+'/slide'+ it +'"></a>')
+	// 			bulletInside.append('<a class="bullet-child" href="#'+anchor+'/'+ anc[k][z] + '" data-interval="'+ it2 +'"></a>')
+	// 		}
+	// 	}
+	// }
 
 	function initBulletSlide(){
 		var bullet = $(".bullet-nav")
@@ -302,7 +323,6 @@ $(document).ready(function() {
 	 		var active = container.find('.fp-section.active')
 	 		initBulletRight($(".section"),active.data('count'))
   		}  , 500 );
-  		console.log('render')
  		initBulletSlide()
 		startAutoScroll()
 	}

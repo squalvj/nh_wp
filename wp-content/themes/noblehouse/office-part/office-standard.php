@@ -1,7 +1,7 @@
 <?php global $field; ?>
 <div class="section" data-nama="<?= trimSpace($field['header']); ?>">	
-	 <?php if ($field['background_page']): ?>
-        <div class="bg">
+ 	<?php if ($field['background_page']): ?>
+        <div class="bg-gradient-left-right">
             <img src="<?= $field['background_page'] ?>">
         </div>
     <?php endif; ?>
@@ -13,7 +13,7 @@
 				<?php elseif ($field['standard_type'] == "Accordion"): ?>
 					<?= get_template_part('office-part/part/accordion'); ?>
 				<?php else: ?>
-					
+					<?= get_template_part('office-part/part/standard'); ?>
 				<?php endif; ?>
         	</div>
     	</div>

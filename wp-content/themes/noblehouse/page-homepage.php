@@ -30,7 +30,7 @@
               </div>
               <div class="item-right">
                 <h2><?= $field['sub_heading_right'] ?></h2>
-                <p><?= $field['content_right'] ?></p><a href="#">
+                <p><?= $field['content_right'] ?></p><a href="<?= site_url() ?>/lifestyle">
                   <button class="btn-more btn">More</button></a>
               </div>
             </div>
