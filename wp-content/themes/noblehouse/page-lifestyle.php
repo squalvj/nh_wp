@@ -14,13 +14,15 @@
         <div id="fullpage-lifestyle" class="fullpg">
             <?php if ( $query->have_posts() ) : ?>
                 <?php while( $query->have_posts() ) : $query->the_post();?>
-                    <?php $layout = get_field("layout",get_the_ID()); $field = get_fields(get_the_ID()); ?>
+                    <?php $layout = get_field("layout",get_the_ID()); $i; $field = get_fields(get_the_ID()); ?>
                     <?php if ($layout == "Standard"): ?>
-                         <?= get_template_part('lifestyle-part/lifestyle', 'standard'); ?>
+                        <?= get_template_part('lifestyle-part/lifestyle', 'standard'); ?>
+                    <?php elseif ($layout == "Tab"): ?>
+                        <?= get_template_part('lifestyle-part/lifestyle', 'tab'); ?>
                     <?php else: ?>
                         <?= get_template_part('office-part/office', 'slider'); ?>
                     <?php endif; ?>
-                <?php endwhile; ?>
+                <?php $i++; endwhile; ?>
             <?php endif; ?>
         <?php get_template_part( 'nav/nav', 'bottom' ); ?>
         <div class="bullet-right"></div>

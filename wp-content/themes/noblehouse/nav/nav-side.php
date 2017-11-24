@@ -15,9 +15,9 @@
             </form>
         </div>
         <ul class="menu-ul">
-            <li><span>01</span><a href="#">Welcome</a></li>
-            <li> <span>02</span><a href="#">Office</a></li>
-            <li> <span>03</span><a href="#">Lifestyle</a></li>
+            <li><span>01</span><a href="<?= site_url(); ?>">Welcome</a></li>
+            <li> <span>02</span><a href="<?= site_url(); ?>/office">Office</a></li>
+            <li> <span>03</span><a href="<?= site_url(); ?>/lifestyle">Lifestyle</a></li>
             <li> <span>04</span><a href="#">News & Promotion</a></li>
             <li> <span>05</span><a href="#" type="button" id="contact-btn">Contact Us</a></li>
         </ul>

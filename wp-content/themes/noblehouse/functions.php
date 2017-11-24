@@ -92,3 +92,8 @@ function trimSpace($str){
 	$st = str_replace(' ', '', $str);
 	return $st;
 }
+
+function trimSpecial($str){
+	$vars = preg_replace("/[^A-Za-z0-9]/", "", $str);
+	return $vars;
+}

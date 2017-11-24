@@ -7,6 +7,7 @@ $(document).ready(function() {
  	});
  	var isInvert = false;
  	var interval = [];
+ 	var interval2 = [];
 	if ($("#fullpage").length == 1){
 		$('#fullpage').fullpage({
 			css3: true,
@@ -77,20 +78,7 @@ $(document).ready(function() {
 		  		
 		  	},
 	  	 	afterRender: function () {
-	  	 		//determine which section active and add active class to nav right
-	  	//  		var container = $(this);
-		 	// 	var section = container.find('.section')
-		 	// 	for (var i = 0; i < section.length; i++){
-		 	// 		section.eq(i).attr('data-count', i);
-		 	// 	}
-		 	// 	setTimeout( function(){ 
-			 // 		var active = container.find('.fp-section.active')
-			 // 		initBulletRight($(".section"),active.data('count'))
-		  // 		}  , 500 );
-		  // 		console.log('render')
-		 	// 	initBulletSlide()
-				// startAutoScroll()
-				console.log("RENDER")
+
 			}
 		});
 	}
@@ -114,9 +102,6 @@ $(document).ready(function() {
 			    var childrenNext = nextEl.find('.items-left-right').children()
 			    opacity(childrenNext)
 			   	munculStagger(childrenNext,.3)
-			   	// if (nextIndex == 1){
-			   	// 	stopAutoScroll();
-			   	// }
 			   	changeBulletNav(nextIndex)
 			   	var nextEl = $(".section").eq(nextIndex-1)
 			   	var invert = nextEl.find('.invert')
@@ -142,6 +127,8 @@ $(document).ready(function() {
 			}
 		});
 	}
+
+
 
 	function setBulletSlide(el){
 		var index = parseInt(el.find('.active').data('index'))
@@ -195,6 +182,72 @@ $(document).ready(function() {
 	function fadeOuts(el){
 		TweenMax.to(el, 1, {opacity:0})
 	}
+
+	function initBulletSlideGallery(){
+		var bullet = $(".bullet-nav-tab")
+		var parent = bullet.parent();
+		var gallery = bullet.siblings('.gallery-tab-slider')
+		var galleryGroup = gallery.children('.gallery-group');
+		var container = [];
+		var bulletGroup = [];
+		var bullet = []
+		for (var i = 0; i < parent.length; i++){
+			container[i] = parent.eq(i);
+		}
+		for (var i = 0; i < container.length; i++){
+			var bulletInside = container[i].children('.bullet-nav-tab')
+			bulletGroup[i] = container[i].find(".gallery-tab-slider").children()
+			for (var c = 0; c < bulletGroup[i].length; c++){
+				var gallery = bulletGroup[i].eq(c).data('gallery')
+				bulletInside.append('<div data-gallery="'+gallery+'" class="bullet-group"></div>')
+				for (var z = 0; z < bulletGroup[i].eq(c).children().length; z++){
+					bulletInside.children('.bullet-group').eq(c).append('<a class="bullet-tab-child" data-index="'+z+'" data-gallery="'+gallery+'" href="#"></a>')
+				}
+				
+			}
+		}
+		$(".gallery-group").children('img:first-child').addClass('active')
+		$(".bullet-group:first-child").addClass('active')
+		$(".bullet-tab-child:first-child").addClass('active')
+		startAutoScroll2()
+	}
+
+	function startAutoScroll2(){
+		var bulletnav = $(".bullet-group")
+		
+		for (var i = 0; i < bulletnav.length; i++){
+			var container = bulletnav.eq(i)
+			var section = container.closest('.section')
+			startauto2(interval2, container, section)
+		}
+	}
+
+	function startauto2(el, container, section){
+		el.push(setInterval(function () {
+			if (section.hasClass('active') && container.hasClass('active')){
+				var bullet = container.find('.bullet-tab-child.active')
+				var next = bullet.next();
+				if (bullet.is(':last-child')){
+					bullet.removeClass('active')
+					bullet = container.children('.bullet-tab-child:first-child')
+					next = bullet
+				}
+				bullet.removeClass('active')
+				next.addClass('active')
+
+				var img = section.find('.gallery-tab-slider').children('.gallery-group.active').children();
+				var indexEl = next.data('index')
+				img.removeClass('active')
+				img.each(function(index, el) {
+					if (parseInt($(this).data('index')) === indexEl){
+						$(this).addClass('active')
+					}
+				});
+			}
+		}, 7000));
+	}
+
+
 
 	function initBulletSlide(){
 		var bullet = $(".bullet-nav")
@@ -330,6 +383,26 @@ $(document).ready(function() {
 	   	$(".bullet-right ").find('.'+nextIndex).addClass('active')
 	}
 
+	$(".tab-type-pill").click(function(event) {
+		var nameGallery = $(this).data('gallery')
+		var section = $(this).closest('.section')
+		var parentGallery = section.find('.gallery-tab-slider')
+		var galleryGroup = parentGallery.children('.gallery-group')
+		galleryGroup.removeClass('active')
+		galleryGroup.each(function(index, el) {
+			if ($(this).data('gallery') == nameGallery){
+				$(this).addClass('active')
+			}
+		});
+		var navGroup = section.find(".bullet-nav-tab")
+		navGroup.children().removeClass('active')
+		navGroup.children().each(function(index, el) {
+			if ($(this).data('gallery') == nameGallery){
+				$(this).addClass('active')
+			}
+		});
+	});
+
 	$(".bullet-nav").on('click', '.bullet-child', function(event) {
 		var parent = $(this).parent('.bullet-nav')
 		var indexEl = parseInt($(this).data('index'));
@@ -341,6 +414,21 @@ $(document).ready(function() {
 			}
 		});
 		parent.find('.bullet-child').removeClass('active')
+		$(this).addClass('active')
+	});
+
+	$(".bullet-nav-tab").on('click', '.bullet-tab-child', function(event) {
+		var parent = $(this).parent();
+		var indexs = parseInt($(this).data('index'));
+		var namaGallery = $(this).data('gallery')
+		var activeGallery = $(this).closest('.section').find(".gallery-tab-slider").find('.active')
+		activeGallery.children().removeClass('active')
+		activeGallery.children().each(function(index, el) {
+			if (parseInt($(this).data('index')) === indexs){
+				$(this).addClass('active')
+			}
+		});
+		parent.children().removeClass('active')
 		$(this).addClass('active')
 	});
 
@@ -411,6 +499,8 @@ $(document).ready(function() {
 	 		initBulletRight($(".section"),active.data('count'))
   		}  , 500 );
  		initBulletSlide()
+ 		if ($(".gallery-tab-slider").length)
+ 			initBulletSlideGallery();
 		startAutoScroll()
 	}
 	init();

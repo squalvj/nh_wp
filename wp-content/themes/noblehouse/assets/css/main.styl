@@ -99,6 +99,26 @@ body
 	
 .menu
 	background black
+.gallery-tab-slider
+	.gallery-group
+		opacity 0
+		-webkit-transition: all 1s ease
+		-moz-transition: all 1s ease
+		-ms-transition: all 1s ease
+		-o-transition: all 1s ease
+		transition: all 1s ease
+		&.active
+			opacity 1
+		img
+			opacity 0
+			-webkit-transition: all 1s ease
+			-moz-transition: all 1s ease
+			-ms-transition: all 1s ease
+			-o-transition: all 1s ease
+			transition: all 1s ease
+			&.active
+				opacity 1
+
 .bg,.bg-gradient-left-right
 	position absolute
 	top 0
@@ -138,6 +158,8 @@ body
 .wrapper-content
 	position relative
 	z-index 2
+
+
 
 // sidenav
 .side-nav
@@ -401,6 +423,12 @@ body
 	&.putih
 		h2
 			color white !important
+		li
+			a
+				color rgba(255,255,255,0.8) !important
+		li:hover
+			a
+				border-bottom 1px solid white !important
 		li.active
 			a
 				color white !important
@@ -478,14 +506,43 @@ body
 				text-transform uppercase
 				line-height 20px
 				font-weight bolder
+		.header-tab-content
+			min-height 0
+		.tab-type-content
+			min-height 300px
+			// -moz-osx-font-smoothing: grayscale !important;
+			// -webkit-font-smoothing: antialiased !important;
+			h2
+				font-family quickR
+				font-size 21px
+				margin-top 0
+				margin-bottom 25px
+			p:nth-last-of-type(1)
+				margin-bottom 30px
+			p
+				margin-bottom 0
+			h5
+				font-size 9px
+			a
+				display inline
+				font-family openSB
+				font-size 9px
 	.item-fluid
 		width 100%
 
 .antialias
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 	text-rendering: optimizeLegibility !important;
+	-moz-osx-font-smoothing: grayscale !important;
 	-webkit-font-smoothing: antialiased !important;
 	font-weight 600
+
+.antialias-l
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased !important;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+	text-rendering: optimizeLegibility !important;
+	-webkit-font-smoothing: antialiased !important;
 
 .black-t 
 	color black !important
@@ -571,10 +628,51 @@ body
 .office-home
 	position relative
 	z-index 2
+.bullet-nav-tab
+	position absolute
+	bottom 35px
+	left 50%
+	transform translate(-50%)
+	width auto
+	height auto
+	z-index 2
+	display flex
+	flex-direction space-around
+	align-items center
+	.bullet-group
+		display none
+		&.active
+			display flex
+			flex-direction space-around
+			align-items center
+			a
+				width 8px
+				height 8px
+				background white
+				border-radius 15px
+				display inline-block
+				z-index 10
+				margin 0 5px
+				z-index 3
+				-webkit-transition: all .25s ease
+				-moz-transition: all .25s ease
+				-ms-transition: all .25s ease
+				-o-transition: all .25s ease
+				transition: all .25s ease
+				&:hover
+					cursor pointer
+				&.active
+					-webkit-transform: scale(1.5);
+					-moz-transform: scale(1.5);
+					-ms-transform: scale(1.5);
+					-o-transform: scale(1.5);
+					transform: scale(1.5);
 .bullet-nav
 	position absolute
 	bottom 35px
-	right calc(100% - 55vw)
+	// right calc(100% - 55vw)
+	left 50%
+	transform translate(-50%)
 	width auto
 	height auto
 	z-index 2
