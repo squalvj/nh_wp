@@ -20,7 +20,7 @@
                     <?php elseif ($layout == "Tab"): ?>
                         <?= get_template_part('lifestyle-part/lifestyle', 'tab'); ?>
                     <?php else: ?>
-                        <?= get_template_part('office-part/office', 'slider'); ?>
+                        <?= get_template_part('lifestyle-part/lifestyle', 'accordion'); ?>
                     <?php endif; ?>
                 <?php $i++; endwhile; ?>
             <?php endif; ?>

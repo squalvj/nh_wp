@@ -48,6 +48,7 @@ body
 	-moz-font-feature-settings: "kern";
 	-moz-font-feature-settings: "kern=1";
 	font-kerning: normal;	
+	overflow-x hidden
 	
 // setting fade
 .fullpage-wrapper 
@@ -817,7 +818,184 @@ body
 			display none
 		img:last-child
 			display inline
-// --------------------------------------------------------------------
+			
+// accordion besar
+.container-accordion
+	height 100vh
+	width 100%
+	display flex
+	flex-direction column
+	.wrapper-header-accordion
+		display flex
+		flex-direction row
+		justify-content baseline
+		align-items flex-end
+		background white
+		color $black
+		height 23%
+		padding 30px
+		h5
+			font-family quickR
+			font-size 36px
+			color inherit
+			margin 0
+		span
+			font-family openR
+			font-size 16px
+			color inherit
+			margin 0 25px
+	.wrapper-group-accordion
+		display flex
+		height 77%
+		flex-direction row
+		.wrapper-item-accordion
+			background $black
+			width 100%
+			position relative
+			padding 15vh 0
+			-webkit-transition: all 1s ease,transform .25s ease
+			-moz-transition: all 1s ease,transform .25s ease
+			-ms-transition: all 1s ease,transform .25s ease
+			-o-transition: all 1s ease,transform .25s ease
+			transition: all 1s ease,transform .25s ease
+			overflow hidden
+			&:after
+				position absolute
+				content ''
+				width 100%
+				height 100%
+				top 0
+				left 0
+				opacity 0
+				background linear-gradient(to right, rgba(0,0,0,0.6), transparent)
+				transition all 1s ease
+			&.shrink
+				width 0
+				pointer-events none
+				-webkit-transform: translateZ(0);
+				-moz-transform: translateZ(0);
+				-ms-transform: translateZ(0);
+				-o-transform: translateZ(0);
+				transform: translateZ(0);
+				.header-accordion
+					opacity 0
+			&.active
+				width 100%
+				padding 10vh 100px
+				&:after
+					opacity 1
+				&:hover
+					cursor auto
+					-webkit-transform: translateY(0px);
+					-moz-transform: translateY(0px);
+					-ms-transform: translateY(0px);
+					-o-transform: translateY(0px);
+					transform: translateY(0px);
+				p
+					opacity 1
+					-webkit-transition: all .25s ease
+					-moz-transition: all .25s ease
+					-ms-transition: all .25s ease
+					-o-transition: all .25s ease
+					transition: all .25s ease
+					transition-delay 1s
+				h5
+					opacity 1
+					-webkit-transition: all .25s ease
+					-moz-transition: all .25s ease
+					-ms-transition: all .25s ease
+					-o-transition: all .25s ease
+					transition: all .25s ease
+					transition-delay 1s
+				button
+					opacity 1
+					-webkit-transition: all .25s ease
+					-moz-transition: all .25s ease
+					-ms-transition: all .25s ease
+					-o-transition: all .25s ease
+					transition: all .25s ease
+					transition-delay 1.2s
+				.header-accordion
+					transform translateX(0)
+				img
+					transform scale(1) !important
+					
+			&:hover
+				cursor pointer
+				img
+					transform scale(1.1)
+			.header-accordion
+				font-family quickR
+				font-size 36px
+				position relative
+				z-index 3
+				text-align left
+				opacity 1
+				transform translateX(20px)
+			p
+				position relative
+				z-index 3
+				opacity 0
+				-webkit-transition: all .25s ease
+				-moz-transition: all .25s ease
+				-ms-transition: all .25s ease
+				-o-transition: all .25s ease
+				transition: all .25s ease
+				font-family openR
+				font-size 13px
+				color white
+				line-height 30px
+				width 35%
+			h5
+				margin 13px 0
+				position relative
+				z-index 3
+				opacity 0
+				-webkit-transition: all .25s ease
+				-moz-transition: all .25s ease
+				-ms-transition: all .25s ease
+				-o-transition: all .25s ease
+				transition: all .25s ease
+				font-family openR
+				font-size 9px
+				&:first-of-type
+					margin-top 30px
+				
+			img
+				object-fit cover
+				object-position center
+				width 100%
+				height 100%
+				position absolute
+				top 0
+				left 0
+				-webkit-transition: all .25s ease
+				-moz-transition: all .25s ease
+				-ms-transition: all .25s ease
+				-o-transition: all .25s ease
+				transition: all .25s ease
+			button
+				position relative
+				z-index 3
+				opacity 0
+				-webkit-transition: all .25s ease
+				-moz-transition: all .25s ease
+				-ms-transition: all .25s ease
+				-o-transition: all .25s ease
+				transition: all .25s ease
+				font-family openSB
+				font-size 9px
+				background transparent
+				border none
+				color white
+				margin-top 20px
+// #fullpage-lifestyle
+// 	overflow-x hidden
+
+// .fp-scroller
+// 	height 100% !important
+
+// -------------------------------------------------------------------------------------------------------------------------------------
 @media (min-width: 1200px)
 	.items-left-right.invert.putih 
 		.tab-container 
@@ -829,6 +1007,30 @@ body
 	.bullet-nav
 		visibility hidden	
 @media (max-width: 767px)
+	.container-accordion
+		margin: 100px 0 0;
+		height auto
+		.wrapper-header-accordion
+			flex-direction column
+			align-items: baseline;
+			justify-content: flex-end;
+			span
+				margin 15px 0 0
+		.wrapper-group-accordion
+			flex-direction column
+			.wrapper-item-accordion
+				height: 240px;
+				width 100%
+				&.active
+					height 100vh
+					padding 30px
+					p
+						width 100%
+						transition all 1s ease
+				&.shrink
+					height 0
+					width 100%
+					padding 0
 	.items-left-right
 			flex-direction column
 			margin 100px 0
@@ -837,6 +1039,12 @@ body
 				.item-right
 					margin-top 50px
 @media (max-width: 576px)
+	.container-accordion
+		.wrapper-group-accordion
+			.wrapper-item-accordion
+				&.active
+					height 100vh
+					padding 30px
 	.bullet-right
 		display none
 	.home-left-right

@@ -5,6 +5,7 @@ $(document).ready(function() {
  	$('.section').each(function(el, i) {
  		namaAnchor[el] = $(this).data('nama')
  	});
+ 	var w = $(window).width();
  	var isInvert = false;
  	var interval = [];
  	var interval2 = [];
@@ -59,6 +60,7 @@ $(document).ready(function() {
 			   	changeBulletNav(nextIndex)
 			   	var nextEl = $(".section").eq(nextIndex-1)
 			   	var invert = nextEl.find('.invert')
+
 			   	if (invert.length){
 			   		fadeInOut($(".top-left").first(), $(".top-left").last())
 			   		right($(".top-right").first(),$(".top-right").last() )
@@ -73,6 +75,7 @@ $(document).ready(function() {
 			   		opacity2($(".bottom-right").last(), $(".bottom-right").first())
 			   		$(".bullet-right").removeClass('invert')
 			   	}
+
 		  	},
 		  	afterLoad: function(anchorLink, index) {
 		  		
@@ -87,12 +90,14 @@ $(document).ready(function() {
 		$('#fullpage-lifestyle').fullpage({
 			scrollingSpeed: 2500,
 			css3: true,
-			scrollOverflow: true,
+			// scrollOverflow: true,
+			scrollOverflow:true,
 			// anchors: ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine','ten'],
 
 			//slidesNavigation: false,
 			anchors: namaAnchor,
 			controlArrows: false,
+			//responsiveWidth: 767,
 			//slidesNavPosition: 'bottom',
 			onLeave: function(index, nextIndex, direction) {
 			    var el = $(this);
@@ -118,6 +123,16 @@ $(document).ready(function() {
 			   		opacity2($(".bottom-left").last(), $(".bottom-left").first())
 			   		opacity2($(".bottom-right").last(), $(".bottom-right").first())
 			   		$(".bullet-right").removeClass('invert')
+			   	}
+		   		var accordion = nextEl.find('.container-accordion')
+			   	if (accordion.length){
+			   		fadeInOut($(".top-left").first(), $(".top-left").last())
+			   		right($(".top-right").first(),$(".top-right").last() )
+			   		console.log("ASD")
+			   	}
+			   	else{
+			   		fadeInOut($(".top-left").last(), $(".top-left").first())
+			   		right($(".top-right").last(),$(".top-right").first() )
 			   	}
 		  	},
 		  	afterLoad: function(anchorLink, index) {
@@ -382,6 +397,26 @@ $(document).ready(function() {
 		$(".bullet-right .bullet-right-child").removeClass('active')
 	   	$(".bullet-right ").find('.'+nextIndex).addClass('active')
 	}
+
+	$(".wrapper-item-accordion").click(function(event) {
+		$(".wrapper-group-accordion .wrapper-item-accordion").addClass('shrink')
+		$(this).removeClass('shrink').addClass('active')
+		if (w < 767){
+	 		setTimeout(function(){
+	 			$.fn.fullpage.reBuild();
+	 		},1000)
+		}
+	});
+
+	$(".back-accordion").click(function(event) {
+		$(".wrapper-group-accordion .wrapper-item-accordion").removeClass('active shrink')
+		event.stopPropagation();
+		if (w < 767){
+ 			setTimeout(function(){
+	 			$.fn.fullpage.reBuild();
+	 		},1000)
+		}
+	});
 
 	$(".tab-type-pill").click(function(event) {
 		var nameGallery = $(this).data('gallery')
