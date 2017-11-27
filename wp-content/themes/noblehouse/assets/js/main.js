@@ -399,6 +399,7 @@ $(document).ready(function() {
 	}
 
 	$(".wrapper-item-accordion").click(function(event) {
+		var parent = $(this).closest('.section')
 		if (w < 767){
 			var offset = $(this).offset();
 			if (!$(this).hasClass('active')){
@@ -408,12 +409,13 @@ $(document).ready(function() {
 	 			$.fn.fullpage.reBuild();
 	 		},1000)
 		}
-		$(".wrapper-group-accordion .wrapper-item-accordion").addClass('shrink')
+		parent.find('.wrapper-group-accordion .wrapper-item-accordion').addClass('shrink')
 		$(this).removeClass('shrink').addClass('active')
 	});
 
 	$(".back-accordion").click(function(event) {
-		$(".wrapper-group-accordion .wrapper-item-accordion").removeClass('active shrink')
+		var parent = $(this).closest('.section')
+		parent.find(".wrapper-group-accordion .wrapper-item-accordion").removeClass('active shrink')
 		event.stopPropagation();
 		if (w < 767){
  			setTimeout(function(){
