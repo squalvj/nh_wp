@@ -62,7 +62,7 @@ body
 	visibility: hidden;
 	opacity: 0;
 	//z-index: 0;
-	transition: all 1.5s ease-in-out;
+	transition: all 1s ease-in-out;
 	-webkit-transform: scale(1.1);
 	-moz-transform: scale(1.1);
 	-ms-transform: scale(1.1);
@@ -1046,12 +1046,15 @@ body
 			.wrapper-item-accordion
 				height: 240px;
 				width 100%
+				p
+					width 100%
 				&.active
 					height 95vh
 					padding 30px
 					p
 						width 100%
-						transition all 1s ease
+						transition all .25s ease
+						transition-delay 1s
 				&.shrink
 					height 0
 					width 100%
@@ -1066,14 +1069,19 @@ body
 @media (max-width: 576px)
 	.container-accordion
 		margin-top 50px
-		margin-bottom 40px
+		margin-bottom 0
 		.wrapper-group-accordion
 			.wrapper-item-accordion
 				&.active
 					height 100vh
 					padding 30px
 	.bullet-right
-		display none
+		right 15px
+		a
+			width: 15px;
+			height: 10px;
+			&.active
+				width 25px
 	.home-left-right
 		margin-top 20px !important
 	.wrapper-accordion

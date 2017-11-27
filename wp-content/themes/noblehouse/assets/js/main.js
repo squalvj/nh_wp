@@ -9,6 +9,7 @@ $(document).ready(function() {
  	var isInvert = false;
  	var interval = [];
  	var interval2 = [];
+ 	var scroll;
 	if ($("#fullpage").length == 1){
 		$('#fullpage').fullpage({
 			css3: true,
@@ -50,7 +51,7 @@ $(document).ready(function() {
 			    var el = $(this);
 			    var child = el.find('.items-left-right').children()
 			    var nextEl = el.parent().children().eq(nextIndex-1)
-			    ilangStagger(child,.5)
+			    ilangStagger(child,0)
 			    var childrenNext = nextEl.find('.items-left-right').children()
 			    opacity(childrenNext)
 			   	munculStagger(childrenNext,.3)
@@ -134,15 +135,52 @@ $(document).ready(function() {
 			   		fadeInOut($(".top-left").last(), $(".top-left").first())
 			   		right($(".top-right").last(),$(".top-right").first() )
 			   	}
+
+			   	
+
+			   setIscroll();
 		  	},
 		  	afterLoad: function(anchorLink, index) {
-		  		
+		  		var nextEl = $(".section").eq(index-1)
+				if (nextEl.hasClass('acc')){
+			   		listenScroll(scroll);
+			   	}else{
+			   		stopListenScroll(scroll)
+			   	}
+			   	console.log(nextEl)
 		  	},
 	  	 	afterRender: function () {
+			},
+			afterResize: function (){
+				console.log("resize")
 			}
 		});
 	}
 
+	function setIscroll(){
+		var iscroll = $('.fp-section.active').find('.fp-scrollable').data('iscrollInstance');
+		console.log(iscroll)
+	}
+
+	function listenScroll(el){
+		var iscroll = $('.fp-section.active').find('.fp-scrollable').data('iscrollInstance');
+		el = setInterval(function(){
+		console.log(iscroll.y)
+		if(iscroll && typeof iscroll !== undefined){
+			if (iscroll.y < -170 || iscroll.y == 0){
+				right($(".top-right").last(),$(".top-right").first() )
+			}
+			else{
+				right($(".top-right").first(),$(".top-right").last() )
+			}
+			
+   		}
+		},100)
+	}
+
+	function stopListenScroll(el){
+		clearInterval(el)
+	}
 
 
 	function setBulletSlide(el){
@@ -190,6 +228,7 @@ $(document).ready(function() {
 	// 		}
 	// 	}
 	// }
+
 
 	function fadeIns(el){
 		TweenMax.to(el, 1, {opacity:1})
@@ -318,6 +357,12 @@ $(document).ready(function() {
 	// 	bfirst.addClass('active')
 	// }
 
+	$(window).scroll(function (event) {
+	    var scroll = $(window).scrollTop();
+	    console.log(scroll)
+	});
+
+
 	function initBulletRight(el, eq){
 		var count = el.length
 		var anchor
@@ -381,11 +426,11 @@ $(document).ready(function() {
 	}
 
 	function ilangStagger(el,del){
-		TweenMax.staggerTo(el, 1, {y:40, opacity:0 ,ease: Back.easeIn.config(1.7)}, del)
+		TweenMax.staggerTo(el, .8, {y:40, opacity:0 ,ease: Back.easeIn.config(1.7)}, del)
 	}
 
 	function munculStagger(el,del){
-		TweenMax.staggerFrom(el, .5, {opacity:0, y:-20 ,delay:2.1, ease: Power4.easeOut},del)
+		TweenMax.staggerFrom(el, .5, {opacity:0, y:-20 ,delay:1.6, ease: Power4.easeOut},del)
 	}
 
 
