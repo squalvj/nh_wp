@@ -1,14 +1,23 @@
 <?php global $field;?>
-<div class="section " data-nama="<?= trimSpace($field['title']); ?>">	
+<div class="section acc" data-nama="<?= trimSpace($field['title']); ?>">	
     <div class="container-accordion">
         <div class="wrapper-header-accordion">
-            <h5>Hotels</h5>
-            <span>Noble House is surrounded by numerous 5-star hotels</span>
+            <h5><?= $field['title']; ?></h5>
+            <span><?= $field['description']; ?></span>
         </div>
         <div class="wrapper-group-accordion">
-            <div class="wrapper-item-accordion">
-                <h1 class="header-accordion">Ritz Carlton</h1>
-                <img src="<?= get_template_directory_uri(); ?>/assets/img/bg-office.jpg" class="bg-accordion">
+            <?php $rows = get_field('accordion_layout'); ?>
+            <?php if($rows): foreach($rows as $row):?>
+                <div class="wrapper-item-accordion">
+                    <h1 class="header-accordion"><?= $row['header_accordion']; ?></h1>
+                    <img src="<?= $row['background_accordion']; ?>" class="bg-accordion">
+                    <?= $row['content_accordion']; ?>
+                    <button class="back-accordion">< ALL <?= $field['title'] ?></button>
+                </div>
+            <?php endforeach; endif; ?>
+            <!-- <div class="wrapper-item-accordion">
+                <h1 class="header-accordion"><?= $row['header_accordion']; ?></h1>
+                <img src="<?= $row['background_accordion']; ?>" class="bg-accordion">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                 quis nostrud exercitation ullamco laboris nisi ut aliquip. ullamco laboris nisi ut aliquip</p>
@@ -19,47 +28,7 @@
                 <h5>Telp    : 021-12345467</h5>
                 <h5>Website: Tori-ya.com</h5>
                 <button class="back-accordion">< ALL HOTELS</button>
-            </div>
-
-            <div class="wrapper-item-accordion">
-                <h1 class="header-accordion">Ritz Carlton</h1>
-                <img src="<?= get_template_directory_uri(); ?>/assets/img/bg-office.jpg" class="bg-accordion">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-
-                <button class="back-accordion">< ALL HOTELS</button>
-            </div>
-
-            <div class="wrapper-item-accordion">
-                <h1 class="header-accordion">Ritz Carlton</h1>
-                <img src="<?= get_template_directory_uri(); ?>/assets/img/bg-office.jpg" class="bg-accordion">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-
-                <button class="back-accordion">< ALL HOTELS</button>
-            </div>
-
-            <div class="wrapper-item-accordion">
-                <h1 class="header-accordion">Ritz Carlton</h1>
-                <img src="<?= get_template_directory_uri(); ?>/assets/img/bg-office.jpg" class="bg-accordion">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-
-                <button class="back-accordion">< ALL HOTELS</button>
-            </div>
-
-            <div class="wrapper-item-accordion">
-                <h1 class="header-accordion">Ritz Carlton</h1>
-                <img src="<?= get_template_directory_uri(); ?>/assets/img/bg-office.jpg" class="bg-accordion">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-
-                <button class="back-accordion">< ALL HOTELS</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

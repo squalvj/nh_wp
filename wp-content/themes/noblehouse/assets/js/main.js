@@ -399,13 +399,17 @@ $(document).ready(function() {
 	}
 
 	$(".wrapper-item-accordion").click(function(event) {
-		$(".wrapper-group-accordion .wrapper-item-accordion").addClass('shrink')
-		$(this).removeClass('shrink').addClass('active')
 		if (w < 767){
+			var offset = $(this).offset();
+			if (!$(this).hasClass('active')){
+				$('.fp-scroller').css('transform','translate(0px, 0px) translateZ(0px)');
+			}
 	 		setTimeout(function(){
 	 			$.fn.fullpage.reBuild();
 	 		},1000)
 		}
+		$(".wrapper-group-accordion .wrapper-item-accordion").addClass('shrink')
+		$(this).removeClass('shrink').addClass('active')
 	});
 
 	$(".back-accordion").click(function(event) {

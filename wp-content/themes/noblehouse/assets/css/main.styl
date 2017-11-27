@@ -917,21 +917,23 @@ body
 					transition-delay 1.2s
 				.header-accordion
 					transform translateX(0)
+					text-align left
 				img
 					transform scale(1) !important
 					
 			&:hover
 				cursor pointer
 				img
-					transform scale(1.1)
+					transform scale(1.02)
 			.header-accordion
 				font-family quickR
 				font-size 36px
 				position relative
 				z-index 3
-				text-align left
+				//text-align left
 				opacity 1
-				transform translateX(20px)
+				//stransform translateX(20px)
+				text-align center
 			p
 				position relative
 				z-index 3
@@ -1007,6 +1009,9 @@ body
 	.bullet-nav
 		visibility hidden	
 @media (max-width: 767px)
+	.acc
+		.fp-scroller
+			transition all .50s cubic-bezier(0.1, 0.57, 0.1, 1) !important
 	.container-accordion
 		margin: 100px 0 0;
 		height auto
@@ -1022,7 +1027,7 @@ body
 				height: 240px;
 				width 100%
 				&.active
-					height 100vh
+					height 95vh
 					padding 30px
 					p
 						width 100%
@@ -1040,6 +1045,8 @@ body
 					margin-top 50px
 @media (max-width: 576px)
 	.container-accordion
+		margin-top 50px
+		margin-bottom 40px
 		.wrapper-group-accordion
 			.wrapper-item-accordion
 				&.active
@@ -1098,6 +1105,6 @@ body
 			margin-bottom 50px
 		&.invert,&.putih
 			.tab-container
-				margin-left -10px
+				margin-left -5px
 				li
-					padding 10px
+					padding 5px
