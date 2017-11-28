@@ -4,17 +4,19 @@
 <a href="<?= site_url() ?>" class="top-left change">
     <img class="logo_putih" src="<?= get_template_directory_uri(); ?>/assets/img/logo_putih.svg">
 </a>
-<a href="<?= site_url() ?>" class="top-left change asd">
+<a href="<?= site_url() ?>" class="top-left change">
     <img src="<?= get_template_directory_uri(); ?>/assets/img/logo_hitam.svg">
 </a>
 <div class="wrapper-kotak top-right change">
     <button class="open-nav">
         <img src="<?= get_template_directory_uri(); ?>/assets/img/kotak4.svg">
+        <img src="<?= get_template_directory_uri(); ?>/assets/img/logo_putih.svg">
     </button>
 </div>
 <div class="wrapper-kotak top-right change">
     <button class="open-nav">
         <img src="<?= get_template_directory_uri(); ?>/assets/img/kotak4black.svg">
+        <img src="<?= get_template_directory_uri(); ?>/assets/img/logo_hitam.svg">
     </button>
 </div>
 <div class="bottom-left change">

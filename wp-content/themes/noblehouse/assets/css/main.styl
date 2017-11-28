@@ -97,7 +97,9 @@ body
 		align-items center
 		justify-content space-between
 		min-height 300px
-	
+button
+	&:focus
+		outline: none;
 .menu
 	background black
 .gallery-tab-slider
@@ -167,6 +169,25 @@ body
 textarea
 	resize none
 	overflow hidden
+.logo-inside
+	position: absolute;
+	top: 30px;
+	left: 30px;
+.link-inside
+	display none
+	flex-direction column
+	justify-content space-around
+	position absolute
+	left 30px
+	bottom 30px
+	height: 80px;
+	a
+		color rgba(255,255,255,0.8)
+		text-transform uppercase
+		font-family: openR;
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 1px;
 .side-nav
 	position fixed
 	right 0
@@ -334,6 +355,8 @@ textarea
 			-ms-transition: all .25s ease
 			-o-transition: all .25s ease
 			transition: all .25s ease
+			&:nth-child(2)
+				display none
 		&:hover
 			img
 				transform scale(1.1)
@@ -1126,6 +1149,30 @@ textarea
 				.item-right
 					margin-top 50px
 @media (max-width: 576px)
+	.link-inside
+		display flex
+	.wrapper-kotak
+		> button
+			display flex
+			flex-direction row
+			flex-wrap wrap
+			width 65px
+			background transparent
+			border none
+			padding 0
+			img
+				width 100%
+				-webkit-transition: all .25s ease
+				-moz-transition: all .25s ease
+				-ms-transition: all .25s ease
+				-o-transition: all .25s ease
+				transition: all .25s ease
+				&:nth-child(1)
+					display none
+				&:nth-child(2)
+					display block
+	.top-left
+		display none !important
 	#fullpage-news
 		.container-accordion
 			margin-bottom: 0;
@@ -1134,7 +1181,8 @@ textarea
 			.wrapper-group-accordion
 				.wrapper-item-accordion
 					&.active
-						height 150vh
+						//height 150vh
+						height 100%
 					.wrapper-inside-item-accordion
 						max-height none
 						overflow unset
@@ -1182,13 +1230,14 @@ textarea
 		&.active
 			width 100vw
 			.contact-nav
-				top 285px
-				#back-contact
-					top 240px
+				top 170px
 		.content-nav
 			width 100vw
 			background rgba(0,0,0,0.9)
-			padding 120px 30px 30px
+			padding 80px 30px 30px
+			
+			.logo-text
+				visibility hidden
 		.bg-black
 			display none !important
 	.bottom-left

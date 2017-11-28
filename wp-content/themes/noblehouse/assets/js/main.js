@@ -413,7 +413,10 @@ $(document).ready(function() {
 		var parent = $(this).closest('.section')
 		var scroll = $(this).find(".wrapper-inside-item-accordion")
 		var iscroll = $('.fp-section.active').find('.fp-scrollable').data('iscrollInstance');
-		setDY(iscroll.y)
+		console.log(iscroll)
+		if (iscroll != "undefined"){
+		//	setDY(iscroll.y)
+		}
 		if (w < 767){
 			var i = $(this).closest($('.fp-scroller'));
 			if (!$(this).hasClass('active')){
