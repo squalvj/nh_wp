@@ -4,6 +4,7 @@
 		<script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/bower_components/fullpage.js/dist/jquery.fullpage.min.js"></script>
 		<script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/greensock-js/TweenMax.min.js"></script>
 		<script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/main.js"></script>
+		<script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/jquery.scrollbar.min.js"></script>
 		<?php wp_footer(); ?>
 	</body>
 </html>

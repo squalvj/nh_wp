@@ -10,6 +10,8 @@ $(document).ready(function() {
  	var interval = [];
  	var interval2 = [];
  	var scroll;
+ 	var y = 0;
+ 	var dy = 0;
 	if ($("#fullpage").length == 1){
 		$('#fullpage').fullpage({
 			css3: true,
@@ -111,43 +113,23 @@ $(document).ready(function() {
 			   	changeBulletNav(nextIndex)
 			   	var nextEl = $(".section").eq(nextIndex-1)
 			   	var invert = nextEl.find('.invert')
-			   	if (invert.length){
-			   		fadeInOut($(".top-left").first(), $(".top-left").last())
-			   		right($(".top-right").first(),$(".top-right").last() )
-			   		opacity2($(".bottom-left").first(), $(".bottom-left").last())
-			   		opacity2($(".bottom-right").first(), $(".bottom-right").last())
-			   		$(".bullet-right").addClass('invert')
-			   	}
-			   	else{
-			   		fadeInOut($(".top-left").last(), $(".top-left").first())
-			   		right($(".top-right").last(),$(".top-right").first() )
-			   		opacity2($(".bottom-left").last(), $(".bottom-left").first())
-			   		opacity2($(".bottom-right").last(), $(".bottom-right").first())
-			   		$(".bullet-right").removeClass('invert')
-			   	}
-		   		var accordion = nextEl.find('.container-accordion')
+			   	var accordion = nextEl.find('.container-accordion')
 			   	if (accordion.length){
 			   		fadeInOut($(".top-left").first(), $(".top-left").last())
 			   		right($(".top-right").first(),$(".top-right").last() )
-			   		console.log("ASD")
 			   	}
 			   	else{
 			   		fadeInOut($(".top-left").last(), $(".top-left").first())
 			   		right($(".top-right").last(),$(".top-right").first() )
 			   	}
-
-			   	
-
-			   setIscroll();
 		  	},
 		  	afterLoad: function(anchorLink, index) {
 		  		var nextEl = $(".section").eq(index-1)
 				if (nextEl.hasClass('acc')){
-			   		listenScroll(scroll);
+			   		//listenScroll(scroll);
 			   	}else{
-			   		stopListenScroll(scroll)
+			   		//stopListenScroll(scroll)
 			   	}
-			   	console.log(nextEl)
 		  	},
 	  	 	afterRender: function () {
 			},
@@ -157,9 +139,22 @@ $(document).ready(function() {
 		});
 	}
 
-	function setIscroll(){
-		var iscroll = $('.fp-section.active').find('.fp-scrollable').data('iscrollInstance');
-		console.log(iscroll)
+	if ($("#fullpage-news").length == 1){
+		$('#fullpage-news').fullpage({
+			scrollingSpeed: 2500,
+			css3: true,
+			scrollOverflow:true,
+			anchors: namaAnchor,
+			controlArrows: false,
+			onLeave: function(index, nextIndex, direction) {
+			    
+		  	},
+		  	afterLoad: function(anchorLink, index) {
+		  	},
+		  	afterRender: function() {
+		  		console.log("TEAST")
+		  	}
+		});
 	}
 
 	function listenScroll(el){
@@ -325,44 +320,9 @@ $(document).ready(function() {
 				bulletInside.append('<a class="bullet-child" data-index="'+z+'"></a>')
 			}
 		}
-		
-			
-		// for (var i = 0; i < child.length; i++){
-		// 	bullet.append('<a class="bullet-child" data-index="'+i+'"></a>')
-		// }
 		var bfirst = $(".bullet-nav .bullet-child:first-child")
 		bfirst.addClass('active')
 	}
-
-	// function initBulletSlide(){
-	// 	var bullet = $(".bullet-nav")
-	// 	var child = bullet.siblings('.container').find('.gallery-slider').children()
-	// 	var parent = bullet.siblings('.container').find('.gallery-slider')
-	// 	var gallery = [];
-	// 	console.log(parent.length)
-	// 	for (var i = 0; i < parent.length; i++){
-	// 		gallery[i] = parent.eq(i);
-	// 	}
-	// 	// TweenMax.set(parent, {opacity:0})
-	// 	// TweenMax.set(parent.first(), {opacity:1})
-
-	// 	child.each(function(index, el) {
-	// 		$(this).attr('data-index', index)
-	// 	});
-	// 	console.log(gallery)
-	// 	for (var i = 0; i < child.length; i++){
-	// 		bullet.append('<a class="bullet-child" data-index="'+i+'"></a>')
-	// 	}
-	// 	var bfirst = $(".bullet-nav .bullet-child:first-child")
-	// 	bfirst.addClass('active')
-	// }
-
-	$(window).scroll(function (event) {
-	    var scroll = $(window).scrollTop();
-	    console.log(scroll)
-	});
-
-
 	function initBulletRight(el, eq){
 		var count = el.length
 		var anchor
@@ -443,29 +403,63 @@ $(document).ready(function() {
 	   	$(".bullet-right ").find('.'+nextIndex).addClass('active')
 	}
 
+	var iscroll = $('.fp-section.active').find('.fp-scrollable').data('iscrollInstance');
+	// setInterval(function(){
+	// 	console.log(iscroll.y);
+	// 	console.log(this.dy)
+	// },100)
+
 	$(".wrapper-item-accordion").click(function(event) {
 		var parent = $(this).closest('.section')
+		var scroll = $(this).find(".wrapper-inside-item-accordion")
+		var iscroll = $('.fp-section.active').find('.fp-scrollable').data('iscrollInstance');
+		setDY(iscroll.y)
 		if (w < 767){
-			var offset = $(this).offset();
+			var i = $(this).closest($('.fp-scroller'));
 			if (!$(this).hasClass('active')){
-				$('.fp-scroller').css('transform','translate(0px, 0px) translateZ(0px)');
+				TweenMax.to(i,1, {y:0, x:0,z:0})
+				iscroll.y = 0
+				setY(0)
+				console.log("ASD")
 			}
+			//$(this).closest($('.fp-scroller')).css('transform','translate(0px, 0px) translateZ(0px)');
 	 		setTimeout(function(){
 	 			$.fn.fullpage.reBuild();
 	 		},1000)
 		}
 		parent.find('.wrapper-group-accordion .wrapper-item-accordion').addClass('shrink')
 		$(this).removeClass('shrink').addClass('active')
+		if (w > 767){
+			setTimeout(function(){
+				jQuery('.wrapper-inside-item-accordion').scrollbar();
+			}, 1000)
+		}
 	});
+
+	function setY(el){
+		this.y = el;
+	}
+
+	function setDY(el){
+		this.dy = el;
+	}
 
 	$(".back-accordion").click(function(event) {
 		var parent = $(this).closest('.section')
 		parent.find(".wrapper-group-accordion .wrapper-item-accordion").removeClass('active shrink')
+		var iscroll = parent.find('.fp-scrollable').data('iscrollInstance');
+		var complete = function(){
+			iscroll.y = 0
+		}
+		var i = parent.find($('.fp-scroller'));
+		console.log(parent)
 		event.stopPropagation();
 		if (w < 767){
+			TweenMax.fromTo(i,1,{x:0,y:this.dy},{y:0,onComplete:complete})
  			setTimeout(function(){
 	 			$.fn.fullpage.reBuild();
 	 		},1000)
+
 		}
 	});
 
@@ -524,6 +518,9 @@ $(document).ready(function() {
 		$(this).parent().next().collapse('toggle')
 		parent.find('.btn-accor').not($(this)).removeClass('active')
 		$(this).toggleClass('active')
+		setTimeout(function(){
+ 			$.fn.fullpage.reBuild();
+ 		},250)
 		
 	});
 

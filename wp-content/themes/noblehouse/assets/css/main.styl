@@ -344,7 +344,7 @@ body
 	a
 		margin 0 15px
 		font-family openR
-		font-size 12px
+		font-size 10px
 		text-transform uppercase
 		color white
 		letter-spacing 1px
@@ -511,7 +511,7 @@ body
 		.header-tab-content
 			min-height 0
 		.tab-type-content
-			min-height 300px
+			min-height 400px
 			// -moz-osx-font-smoothing: grayscale !important;
 			// -webkit-font-smoothing: antialiased !important;
 			h2
@@ -584,6 +584,51 @@ body
 	color white
 	text-align center
 	margin-bottom 70px
+.archive
+	font-family openR
+	font-size 13px
+	color #AD8A58
+	&:hover
+		color #AD8A58
+#fullpage-news
+	.container-accordion
+		background #1B1D1D
+		.wrapper-header-accordion
+			background inherit
+			padding 30px 60px
+			h5
+				color white
+		.wrapper-group-accordion
+			background #1B1D1D
+			.wrapper-item-accordion
+				.scroll-element
+					opacity 0
+					transition all .25s ease
+				.wrapper-inside-item-accordion
+					transition all .25s ease
+					overflow auto
+					max-height 50vh
+					
+					.header-accordion
+						font-family quickR
+						font-size 21px
+						position relative
+						z-index 3
+						//text-align left
+						opacity 0
+						//stransform translateX(20px)
+						text-align left
+						transition all .25s ease
+						line-height: 35px;
+					p
+						width 100%
+				&.active
+					padding 10vh calc(100% - 600px) 10vh 100px
+					.scroll-element
+						opacity 1
+					.header-accordion
+						opacity 1
+						transition-delay 1s
 
 .modal
 	position fixed
@@ -938,6 +983,7 @@ body
 				.header-accordion
 					transform translateX(0)
 					text-align left
+					margin-bottom 30px
 				img
 					transform scale(1) !important
 					
@@ -1029,9 +1075,18 @@ body
 	.bullet-nav
 		visibility hidden	
 @media (max-width: 767px)
-	.acc
-		.fp-scroller
-			transition all .50s cubic-bezier(0.1, 0.57, 0.1, 1) !important
+	#fullpage-news
+		.container-accordion
+			margin-top 0
+			padding 50px 0 0
+			.wrapper-header-accordion
+			.wrapper-group-accordion
+				.wrapper-item-accordion
+					&.active
+						padding 30px
+	// .acc
+	// 	.fp-scroller
+	// 		transition all .25s cubic-bezier(0.1, 0.57, 0.1, 1) !important
 	.container-accordion
 		margin: 100px 0 0;
 		height auto
@@ -1067,17 +1122,35 @@ body
 				.item-right
 					margin-top 50px
 @media (max-width: 576px)
+	#fullpage-news
+		.container-accordion
+			margin-bottom: 0;
+			.wrapper-header-accordion
+				padding 30px
+			.wrapper-group-accordion
+				.wrapper-item-accordion
+					&.active
+						height 150vh
+					.wrapper-inside-item-accordion
+						max-height none
+						overflow unset
+						
+
+	.tab-type-content
+		margin-bottom 50px
 	.container-accordion
 		margin-top 50px
 		margin-bottom 0
 		.wrapper-group-accordion
 			.wrapper-item-accordion
 				&.active
-					height 100vh
+					height 100vh //harga mati
 					padding 30px
 	.bullet-right
 		right 15px
 		a
+			&:hover
+				width 15px
 			width: 15px;
 			height: 10px;
 			&.active
@@ -1092,6 +1165,7 @@ body
 			padding-right 0
 		&:nth-child(odd)
 			margin-top 0
+			margin-bottom 100px
 	.modal
 		justify-content center
 		.wrapper-modal
@@ -1114,21 +1188,29 @@ body
 		.bg-black
 			display none !important
 	.bottom-left
-		display flex
-		flex-direction column
-		align-items left
-		left 15px
+		display none !important
+		// display flex
+		// flex-direction column
+		// align-items left
+		// left 15px
 	.bottom-right
 		margin-bottom 0
 		bottom 35px
+		display none  !important
 	.wrapper-content
 		//margin-top 130px
-		margin-bottom 200px
+		//margin-bottom 200px
+	.home
+		.wrapper-content
+			margin-bottom 0
+			.item-right
+				margin-top 50px
 	.header-text
 		margin-top 130px
 		margin-bottom 0
 	.items-left-right
-		margin 80px 0 120px
+		// margin 80px 0 120px
+		margin 80px 0 0
 		.item-right
 			margin-bottom 50px
 		&.invert,&.putih
