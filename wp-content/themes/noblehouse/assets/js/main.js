@@ -546,16 +546,19 @@ $(document).ready(function() {
     	TweenMax.to($(".bg-black"),.5, {opacity:0,right:'-100vw'})
     	$(".contact-nav").removeClass('active')
 		TweenMax.to($(".menu-ul"), .10, {opacity:1})
+		TweenMax.to($(".nav-atas"), .10, {opacity:1})
 	});
 
 	$("#contact-btn").click(function(event) {
 		$(".contact-nav").addClass('active')
+		TweenMax.to($(".nav-atas"), .10, {opacity:0})
 		TweenMax.to($(".menu-ul"), .10, {opacity:0})
 	});
 
 	$("#back-contact").click(function(event) {
 		$(".contact-nav").removeClass('active')
 		TweenMax.to($(".menu-ul"), .10, {opacity:1})
+		TweenMax.to($(".nav-atas"), .10, {opacity:1})
 	});
 
 	$(".btn-close-modal").click(function(event) {

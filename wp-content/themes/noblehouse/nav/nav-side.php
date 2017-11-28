@@ -1,8 +1,10 @@
 <div class="side-nav">
   <div class="bg-black"></div>
     <div class="content-nav">
-        <button id="close-nav"><img src="<?= get_template_directory_uri(); ?>/assets/img/close.svg"></button><a class="logo-text" href="#"><img src="<?= get_template_directory_uri(); ?>/assets/img/logo_text.svg"></a>
-        <p>Jl. Dr. Ide Anak Agung Gede Agung Kav. E 4.2 No. 2, Jakarta 12950 Tel. +62 21 2978 3000 Fax. +62 21 2978 3001 marketing@noblehouse.co.id <br><br>PT Graha Lestari Internusa</p>
+        <div class="nav-atas">
+            <button id="close-nav"><img src="<?= get_template_directory_uri(); ?>/assets/img/close.svg"></button><a class="logo-text" href="#"><img src="<?= get_template_directory_uri(); ?>/assets/img/logo_text.svg"></a>
+            <p>Jl. Dr. Ide Anak Agung Gede Agung Kav. E 4.2 No. 2, Jakarta 12950 Tel. +62 21 2978 3000 Fax. +62 21 2978 3001 marketing@noblehouse.co.id <br><br>PT Graha Lestari Internusa</p>
+        </div>
         <div class="contact-nav">
             <button id="back-contact"><img src="<?= get_template_directory_uri(); ?>/assets/img/arrow.svg"></button>
             <form>
