@@ -173,6 +173,10 @@ textarea
 	position: absolute;
 	top: 30px;
 	left: 30px;
+	display none
+	width 65px
+	img
+		width 100%
 .link-inside
 	display none
 	flex-direction column
@@ -635,7 +639,6 @@ textarea
 					transition all .25s ease
 					overflow auto
 					max-height 50vh
-					
 					.header-accordion
 						font-family quickR
 						font-size 21px
@@ -1149,8 +1152,13 @@ textarea
 				.item-right
 					margin-top 50px
 @media (max-width: 576px)
+	.top-right
+		top 20px
+	.logo-inside
+		display block
 	.link-inside
 		display flex
+		bottom 0
 	.wrapper-kotak
 		> button
 			display flex
@@ -1181,11 +1189,11 @@ textarea
 			.wrapper-group-accordion
 				.wrapper-item-accordion
 					&.active
-						//height 150vh
-						height 100%
+						height 100vh
+						//height 100%
 					.wrapper-inside-item-accordion
-						max-height none
-						overflow unset
+						max-height 70vh
+						overflow hidden
 						
 
 	.tab-type-content
@@ -1230,14 +1238,26 @@ textarea
 		&.active
 			width 100vw
 			.contact-nav
-				top 170px
+				top 110px
+				&.active
+					position absolute
 		.content-nav
+			min-height 100%
+			height 10px
 			width 100vw
 			background rgba(0,0,0,0.9)
 			padding 80px 30px 30px
-			
+			overflow auto
+			p.copyright
+				bottom 8px
 			.logo-text
 				visibility hidden
+				margin-bottom 15px
+			&:after
+				min-height 100px
+				width 100%
+				content '';
+				display block
 		.bg-black
 			display none !important
 	.bottom-left

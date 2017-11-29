@@ -144,6 +144,7 @@ $(document).ready(function() {
 			scrollingSpeed: 2500,
 			css3: true,
 			scrollOverflow:true,
+			normalScrollElements: '.scrollbar-rail',
 			anchors: namaAnchor,
 			controlArrows: false,
 			onLeave: function(index, nextIndex, direction) {
@@ -432,11 +433,11 @@ $(document).ready(function() {
 		}
 		parent.find('.wrapper-group-accordion .wrapper-item-accordion').addClass('shrink')
 		$(this).removeClass('shrink').addClass('active')
-		if (w > 767){
+		//if (w > 767){
 			setTimeout(function(){
 				jQuery('.wrapper-inside-item-accordion').scrollbar();
 			}, 1000)
-		}
+		//}
 	});
 
 	function setY(el){
@@ -452,7 +453,9 @@ $(document).ready(function() {
 		parent.find(".wrapper-group-accordion .wrapper-item-accordion").removeClass('active shrink')
 		var iscroll = parent.find('.fp-scrollable').data('iscrollInstance');
 		var complete = function(){
-			iscroll.y = 0
+			if(iscroll && typeof iscroll !== undefined){
+				iscroll.y = 0
+			}
 		}
 		var i = parent.find($('.fp-scroller'));
 		console.log(parent)
@@ -550,16 +553,19 @@ $(document).ready(function() {
     	$(".contact-nav").removeClass('active')
 		TweenMax.to($(".menu-ul"), .10, {opacity:1})
 		TweenMax.to($(".nav-atas"), .10, {opacity:1})
+		$("#close-nav").css('pointer-events', 'auto');
 	});
 
 	$("#contact-btn").click(function(event) {
 		$(".contact-nav").addClass('active')
+		$("#close-nav").css('pointer-events', 'none');
 		TweenMax.to($(".nav-atas"), .10, {opacity:0})
 		TweenMax.to($(".menu-ul"), .10, {opacity:0})
 	});
 
 	$("#back-contact").click(function(event) {
 		$(".contact-nav").removeClass('active')
+		$("#close-nav").css('pointer-events', 'auto');
 		TweenMax.to($(".menu-ul"), .10, {opacity:1})
 		TweenMax.to($(".nav-atas"), .10, {opacity:1})
 	});
