@@ -128,17 +128,15 @@ $(document).ready(function() {
 		  		if (iscroll && typeof iscroll !== undefined){
 					var i = 0;
 					setInterval(function(){
-						console.log(iscroll.y)
-						if (iscroll.y < -140 && i == 0){
+						//console.log(iscroll.y)
+						if (iscroll.y < -180 && i == 0){
 					   		//right($(".top-right").last(),$(".top-right").first() )
 					   		i = 1;
-					   		console.log("-140")
 					   		right($(".top-right").last(),$(".top-right").first() )
 
 						}
-						if(iscroll.y > -140 && i == 1){
+						if(iscroll.y > -180 && i == 1){
 							TweenMax.set($(".top-right").first(),{opacity:1,x:0})
-							console.log(">140")
 							right($(".top-right").first(),$(".top-right").last() )
 							i = 0;
 						}
@@ -417,7 +415,6 @@ $(document).ready(function() {
 				TweenMax.to(i,1, {y:0, x:0,z:0})
 				iscroll.y = 0
 				setY(0)
-				console.log("ASD")
 			}
 			//$(this).closest($('.fp-scroller')).css('transform','translate(0px, 0px) translateZ(0px)');
 	 		setTimeout(function(){
