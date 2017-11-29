@@ -124,6 +124,29 @@ $(document).ready(function() {
 			   	}
 		  	},
 		  	afterLoad: function(anchorLink, index) {
+		  		var iscroll = $('.fp-section.active').find('.fp-scrollable').data('iscrollInstance');
+		  		if (iscroll != "undefined"){
+					var i = 0;
+					setInterval(function(){
+						console.log(iscroll.y)
+						if (iscroll.y < -140 && i == 0){
+					   		//right($(".top-right").last(),$(".top-right").first() )
+					   		i = 1;
+					   		console.log("-140")
+					   		right($(".top-right").last(),$(".top-right").first() )
+
+						}
+						if(iscroll.y > -140 && i == 1){
+							TweenMax.set($(".top-right").first(),{opacity:1,x:0})
+							console.log(">140")
+							right($(".top-right").first(),$(".top-right").last() )
+							i = 0;
+						}
+						else{
+					  		
+						}
+					},100)
+				}
 		  		var nextEl = $(".section").eq(index-1)
 				if (nextEl.hasClass('acc')){
 			   		//listenScroll(scroll);
@@ -200,31 +223,6 @@ $(document).ready(function() {
 		TweenMax.to(el, 1, {opacity:0,delay:1,display:'none'})
 		TweenMax.to(el2, 1, {opacity:1,delay:1,display:'flex'})
 	}
-
-	// function initBulletSlide(){
-	// 	var bullet = $(".bullet-nav")
-	// 	var parent = bullet.parent()
-	// 	var slide = [];
-	// 	var anc = [[],[]];
-	// 	for (var i = 0; i < parent.length; i++){
-	// 		slide[i] = parent.eq(i).find('.slide')
-	// 		anc[i][''] = i
-	// 		for (var l = 0; l < parent.eq(i).find('.slide').length; l++){
-	// 			anc[i][l] = parent.eq(i).find('.slide').eq(l).data('anchor')
-	// 			//console.log(parent.eq(i).find('.slide').eq(l).data('anchor'))
-	// 		}
-	// 	}
-	// 	for (var k = 0; k < slide.length; k++){
-	// 		var bulletInside = slide[k].closest('.section').find('.bullet-nav')
-	// 		for (var z = 0; z < slide[k].length; z++){
-	// 			var it2 = k;
-	// 			var anchor = slide[k].closest('.section').data('anchor')
-	// 			// bulletInside.append('<a class="bullet-child" data-interval="'+ it2 +'" href="#'+anchor+'/slide'+ it +'"></a>')
-	// 			bulletInside.append('<a class="bullet-child" href="#'+anchor+'/'+ anc[k][z] + '" data-interval="'+ it2 +'"></a>')
-	// 		}
-	// 	}
-	// }
-
 
 	function fadeIns(el){
 		TweenMax.to(el, 1, {opacity:1})
@@ -404,17 +402,12 @@ $(document).ready(function() {
 	   	$(".bullet-right ").find('.'+nextIndex).addClass('active')
 	}
 
-	var iscroll = $('.fp-section.active').find('.fp-scrollable').data('iscrollInstance');
-	// setInterval(function(){
-	// 	console.log(iscroll.y);
-	// 	console.log(this.dy)
-	// },100)
+	
 
 	$(".wrapper-item-accordion").click(function(event) {
 		var parent = $(this).closest('.section')
 		var scroll = $(this).find(".wrapper-inside-item-accordion")
 		var iscroll = $('.fp-section.active').find('.fp-scrollable').data('iscrollInstance');
-		console.log(iscroll)
 		if (iscroll != "undefined"){
 		//	setDY(iscroll.y)
 		}
