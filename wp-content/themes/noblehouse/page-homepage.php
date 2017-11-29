@@ -7,7 +7,7 @@
     <div id="fullpage">
       <div class="section home" data-name="Home">
         <div class="container">
-          <div class="wrapper-content"><img src="<?= get_template_directory_uri(); ?>/assets/img/logo.svg"><a href="#"><img src="<?= get_template_directory_uri(); ?>/assets/img/play-ico.svg"></a></div>
+          <div class="wrapper-content"><img class="logo-utama" src="<?= get_template_directory_uri(); ?>/assets/img/logo.svg"><a href="#"><img src="<?= get_template_directory_uri(); ?>/assets/img/play-ico.svg"></a></div>
         </div>
         <div class="mouse"><img class="m" src="<?= get_template_directory_uri(); ?>/assets/img/mouse.svg">
           <div class="wrapper-arrow"><img src="<?= get_template_directory_uri(); ?>/assets/img/arrow.svg"></div>

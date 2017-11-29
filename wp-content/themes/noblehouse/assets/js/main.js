@@ -125,7 +125,7 @@ $(document).ready(function() {
 		  	},
 		  	afterLoad: function(anchorLink, index) {
 		  		var iscroll = $('.fp-section.active').find('.fp-scrollable').data('iscrollInstance');
-		  		if (iscroll != "undefined"){
+		  		if (iscroll && typeof iscroll !== undefined){
 					var i = 0;
 					setInterval(function(){
 						console.log(iscroll.y)
