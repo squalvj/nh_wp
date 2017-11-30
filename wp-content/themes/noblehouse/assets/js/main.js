@@ -1,6 +1,6 @@
-
-
+window.onbeforeunload = function () { $('#loading').show(); }
 $(document).ready(function() {
+	
  	var namaAnchor = []
  	$('.section').each(function(el, i) {
  		namaAnchor[el] = $(this).data('nama')
@@ -35,6 +35,9 @@ $(document).ready(function() {
 		  	},
 		  	afterLoad: function(anchorLink, index) {
 			    //muncul($(this))
+		  	},
+		  	afterRender(){
+		  		showHideLoading();
 		  	}
 		});
 	}
@@ -84,7 +87,7 @@ $(document).ready(function() {
 		  		
 		  	},
 	  	 	afterRender: function () {
-
+	  	 		showHideLoading();
 			}
 		});
 	}
@@ -153,6 +156,7 @@ $(document).ready(function() {
 			   	}
 		  	},
 	  	 	afterRender: function () {
+	  	 		showHideLoading();
 			},
 			afterResize: function (){
 				console.log("resize")
@@ -174,7 +178,7 @@ $(document).ready(function() {
 		  	afterLoad: function(anchorLink, index) {
 		  	},
 		  	afterRender: function() {
-		  		console.log("TEAST")
+		  		showHideLoading();
 		  	}
 		});
 	}
@@ -400,6 +404,23 @@ $(document).ready(function() {
 	   	$(".bullet-right ").find('.'+nextIndex).addClass('active')
 	}
 
+	function setY(el){
+		this.y = el;
+	}
+
+	function setDY(el){
+		this.dy = el;
+	}
+
+	function showHideLoading(){
+		//show loading when document is ready
+		var tl = new TimelineMax();
+		tl.to($('#loading img'), .60, {y:30,ease: Back.easeIn.config(1.7)})
+		.to($('#loading img'), .40, {opacity:0},"-=.40")
+		.to($('#loading'), .75, {opacity:0, ease:Circ})
+		.to($('#loading'), 0, {display:"none"})
+	}
+
 	
 
 	$(".wrapper-item-accordion").click(function(event) {
@@ -429,14 +450,6 @@ $(document).ready(function() {
 			}, 1000)
 		//}
 	});
-
-	function setY(el){
-		this.y = el;
-	}
-
-	function setDY(el){
-		this.dy = el;
-	}
 
 	$(".back-accordion").click(function(event) {
 		var parent = $(this).closest('.section')
@@ -565,15 +578,21 @@ $(document).ready(function() {
 	});
 
 	function init(){
+		//arrow in homepage
 		var arrow = $(".wrapper-arrow img")
+		TweenMax.fromTo(arrow, 2, {y:-20,ease:Circ},{y:20,repeatDelay:1, ease:Circ, repeat:-1,})
+
+		//add accordion icon plus and minus
 		var firstButtonPlus = $('.item-accordion-c.in').prev().find('button')
 		firstButtonPlus.addClass('active')
+
+		//navbar atas kiri kanan
 		TweenMax.to($(".top-left").last(), 0, {scale:2,opacity:0})
 		TweenMax.to($(".top-right").last(), 0, {x:150,opacity:0})
 		TweenMax.to($(".bottom-left").last(), 0, {display:'none', opacity:0})
 		TweenMax.to($(".bottom-right").last(), 0, {display:'none', opacity:0})
-		TweenMax.fromTo(arrow, 2, {y:-20,ease:Circ},{y:20,repeatDelay:1, ease:Circ, repeat:-1,})
 
+		// add data-count each section
 		var container = $(".fullpg");
  		var section = container.find('.section')
  		for (var i = 0; i < section.length; i++){
@@ -585,7 +604,7 @@ $(document).ready(function() {
   		}  , 500 );
  		initBulletSlide()
  		if ($(".gallery-tab-slider").length)
- 			initBulletSlideGallery();
+		initBulletSlideGallery();
 		startAutoScroll()
 	}
 	init();
