@@ -412,14 +412,22 @@ $(document).ready(function() {
 		this.dy = el;
 	}
 
-	function showHideLoading(){
+	function showHideLoading() {
 		//show loading when document is ready
 		var tl = new TimelineMax();
-		tl.to($('#loading img'), .60, {y:30,ease: Back.easeIn.config(1.7)})
-		.to($('#loading img'), .40, {opacity:0},"-=.40")
-		.to($('#loading'), .75, {opacity:0, ease:Circ})
-		.to($('#loading'), 0, {display:"none"})
+		if(window.location.hash) {
+			tl.to($('#loading img'), .60, {y:30,ease: Back.easeIn.config(1.7),delay:1.25})
+			.to($('#loading img'), .40, {opacity:0},"-=.40")
+			.to($('#loading'), .75, {opacity:0, ease:Circ})
+			.to($('#loading'), 0, {display:"none"})
+		} else {
+		 	tl.to($('#loading img'), .60, {y:30,ease: Back.easeIn.config(1.7)})
+			.to($('#loading img'), .40, {opacity:0},"-=.40")
+			.to($('#loading'), .75, {opacity:0, ease:Circ})
+			.to($('#loading'), 0, {display:"none"})
+		}
 	}
+
 
 	
 
