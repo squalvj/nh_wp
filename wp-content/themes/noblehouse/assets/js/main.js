@@ -120,6 +120,9 @@ $(document).ready(function() {
 			   	if (accordion.length){
 			   		fadeInOut($(".top-left").first(), $(".top-left").last())
 			   		right($(".top-right").first(),$(".top-right").last() )
+			   		opacity(accordion.find('.wrapper-header-accordion').children())
+			   		ilangStagger(el.find('.wrapper-header-accordion').children(), .3)
+			   		munculStagger(accordion.find('.wrapper-header-accordion').children(), .3)
 			   	}
 			   	else{
 			   		fadeInOut($(".top-left").last(), $(".top-left").first())
