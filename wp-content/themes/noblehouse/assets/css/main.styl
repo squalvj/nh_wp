@@ -156,8 +156,17 @@ button
 		background: -o-linear-gradient(right, rgba(0,0,0,0.6), transparent); /* For Opera 11.1 to 12.0 */
 		background: -moz-linear-gradient(right, rgba(0,0,0,0.6), transparent); /* For Firefox 3.6 to 15 */
 		background: linear-gradient(to right, rgba(0,0,0,0.6), transparent); /* Standard syntax (must be last) */
-	
 
+.loader
+	width 100px !important
+	position absolute
+	top 0
+	left 0
+	bottom 0
+	right 0	
+	display none
+	margin auto
+	opacity 0
 .wrapper-content
 	position relative
 	z-index 2
@@ -171,7 +180,7 @@ textarea
 	overflow hidden
 .logo-inside
 	position: absolute;
-	top: 30px;
+	top: 30px
 	left: 30px;
 	display none
 	width 65px
@@ -1171,6 +1180,9 @@ textarea
 				.item-right
 					margin-top 50px
 @media (max-width: 576px)
+	.img-right
+		img:first-child
+			min-height 177px
 	.logo-utama
 		width 140px
 	.top-right
@@ -1216,6 +1228,7 @@ textarea
 						.wrapper-inside-item-accordion
 							overflow unset
 							z-index 11
+							overflow-y auto !important
 					.wrapper-inside-item-accordion
 						z-index 1
 						max-height 80vh !important

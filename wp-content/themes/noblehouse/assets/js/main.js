@@ -432,7 +432,18 @@ $(document).ready(function() {
 	}
 
 
-	
+	$(".pil").click(function(event) {
+		var img = $(this).closest('.item-left').siblings('.item-right').find('img').first()
+		var name = $(this).data('image')
+		var tl = new TimelineMax();
+		var loader = $(this).closest('.item-left').siblings('.item-right').find('.loader')
+		$(img).attr('src', name);
+		tl.set(loader, {display:'block'})
+		.set(loader,{opacity:1})
+		$(img).on('load', function(){
+			$(loader).css('display', 'none');
+		});
+	});
 
 	$(".wrapper-item-accordion").click(function(event) {
 		var parent = $(this).closest('.section')

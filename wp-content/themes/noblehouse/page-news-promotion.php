@@ -15,8 +15,8 @@
                             <div class="wrapper-inside-item-accordion scrollbar-rail">
                                 <h1 class="header-accordion"><?= $row['header']; ?></h1>
                                 <p><?= $row['content']; ?></p>
-                                <button class="back-accordion">< PREVIOUS PAGE</button>
                             </div>
+                            <button class="back-accordion">< PREVIOUS PAGE</button>
                             <img src="<?= $row['image']; ?>" class="bg-accordion">
                         </div>
                     <?php endforeach; endif; ?>
