@@ -1,5 +1,6 @@
 <?php global $field,$i;?>
-<div class="section" data-nama="Gourmet<?= $i; ?>">   
+<!-- <div class="section" data-nama="Gourmet<?= $i; ?>">    -->
+<div class="section" data-nama="Gourmet">   
     <div class="bg-gradient-left-right gallery-tab-slider">
         <?php $rows = get_field('tab_layout'); ?>
         <?php if($rows): $i = 1; foreach($rows as $row):?>
@@ -33,7 +34,7 @@
                             <?= $row['content']; ?>
                             </div>
                         <?php $i++; endforeach; endif;?>
-                        <a href="#">MORE RESTAURANTS ></a>
+                        <a href="<?= site_url() ?>/restaurant">MORE RESTAURANTS ></a>
                     </div>
                 </div>
                 <div class="item-right img-right">
