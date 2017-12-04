@@ -6,6 +6,28 @@
 	    <div class="wrapper-header-accordion">
 	        <h5>News & Promotion</h5>
 	    </div>
+	    <div class="wrapper-archive-row">
+			<div class="wrapper-years">
+				<a href="#">2017</a>
+				<a href="#">2016</a>
+			</div>
+			<div class="wrapper-months dragscroll">
+				<a href="#"> January </a>
+				<a href="#"> February </a>
+				<a href="#"> March </a>
+				<a href="#"> April </a>
+				<a href="#"> May </a>
+				<a href="#" class="active"> June </a>
+				<a href="#"> July </a>
+				<a href="#"> August </a>
+				<a href="#"> September </a>
+				<a href="#"> October </a>
+				<a href="#"> November </a>
+				<a href="#"> December </a>
+			</div>
+			<div class="leftg gradient"></div>
+			<div class="rightg gradient"></div>r
+	    </div>
 	    <div class="wrapper-archive">
 			<div class="wrapper-year scrollbar-rail">
 				<div class="group">
@@ -28,12 +50,12 @@
 							</ul>
 						</li>
 						<li> <a href="#"> July </a> </li>
-						<li> <a href="#"> August </a>
+						<li> <a href="#"> August </a> </li>
 						<li> <a href="#"> September </a> </li>
 						<li> <a href="#"> October </a> </li>
 						<li> <a href="#"> November </a> </li>
 						<li> <a href="#"> December </a> </li>
-					</li>
+					</ul>
 				</div>
 				<div class="group">
 					<ul>
@@ -49,12 +71,12 @@
 							<a href="#"> June </a> 
 						</li>
 						<li> <a href="#"> July </a> </li>
-						<li> <a href="#"> August </a>
+						<li> <a href="#"> August </a> </li>
 						<li> <a href="#"> September </a> </li>
 						<li> <a href="#"> October </a> </li>
 						<li> <a href="#"> November </a> </li>
 						<li> <a href="#"> December </a> </li>
-					</li>
+					</ul>
 				</div>
 			</div>
 			<div class="wrapper-article scrollbar-rail">

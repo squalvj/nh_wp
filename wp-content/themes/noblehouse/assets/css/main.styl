@@ -711,7 +711,9 @@ textarea
 					position absolute
 					left 0
 					top 0
-			
+.wrapper-archive-row
+	display none
+
 #fullpage-news
 	.container-accordion
 		background #1B1D1D
@@ -1214,6 +1216,60 @@ textarea
 	.bullet-nav
 		visibility hidden	
 @media (max-width: 767px)
+	.wrapper-archive
+		.wrapper-year
+			display none
+		.wrapper-article
+			max-width 50%
+		.wrapper-gallery-article
+			width 50%
+	.background-b
+		padding 100px 15px
+	.wrapper-archive-row
+		margin-top 30px
+		display flex
+		flex-direction column
+		justify-content center
+		width 100%
+		color #F6F7F7
+		position relative
+		.wrapper-years
+			width 100%
+			display flex
+			flex-direction row
+			justify-content center
+			a
+				font-size: 21px;
+				color: #f3f4f4;
+				font-family quickR
+				display: inline-block;
+				margin 0 20px
+				color inherit
+		.wrapper-months
+			-webkit-mask-image: -webkit-gradient(linear, left 90%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))
+			display flex
+			flex-direction row
+			justify-content flex-start
+			align-items baseline
+			max-width 100%
+			overflow auto
+			position relative
+			a
+				display inline-block
+				font-family quickR
+				color inherit
+				margin 15px
+		.gradient
+			position absolute
+			bottom 0
+			width 50px
+			height 48px
+		.leftg
+			background linear-gradient(to right, rgba(27,29,29,1), rgba(27,29,29,0))
+			left 0
+		.rightg
+			right 0
+			background linear-gradient(to left, rgba(27,29,29,1), rgba(27,29,29,0))
 	#fullpage-news
 		.container-accordion
 			margin-top 0
@@ -1261,6 +1317,24 @@ textarea
 				.item-right
 					margin-top 50px
 @media (max-width: 576px)
+	.wrapper-archive-row
+		margin-bottom 105px
+	.background-b
+		padding 75px 15px
+	.wrapper-archive
+		flex-wrap wrap-reverse
+		.wrapper-article
+			max-width 100%
+			width 100%
+			max-height 400px
+			margin-top: 50px;
+		.wrapper-gallery-article
+			width 100%
+			height auto !important
+			.item
+				height 300px !important
+				img
+					width 100% !important
 	.logo-utama
 		width 140px
 	.top-right
@@ -1409,3 +1483,6 @@ textarea
 				margin-left -5px
 				li
 					padding 5px
+// @media (max-width: 390px)
+// 	.wrapper-archive-row .wrapper-months:before,.wrapper-archive-row .wrapper-months:after
+// 		top 233px

@@ -637,6 +637,7 @@ $(document).ready(function() {
 		if ($(".wrapper-archive").length){
 			$('.wrapper-year').scrollbar();
 			$('.wrapper-article').scrollbar();
+			$('.wrapper-months').scrollbar();
 			$(".owl-carousel").owlCarousel({
 				loop:true,
 				margin:10,
