@@ -1,7 +1,4 @@
-<?php get_header(); 
-$uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$uri_segments = explode('/', $uri_path);
-?>
+<?php get_header(); ?>
 <link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/assets/css/rail-custom.css">
 <div class="background-b">
 	<?php get_template_part( 'nav/nav', 'side' ); ?>
@@ -11,9 +8,8 @@ $uri_segments = explode('/', $uri_path);
 	    </div>
 	    <div class="wrapper-archive-row">
 			<div class="wrapper-years">
-				<?php for ($i = last_post_year(); $i >= first_post_year(); $i--): ?>
-                	<a <?php if ($i == $uri_segments[2]): ?> class="active" <?php endif; ?> href="<?= get_year_link($i) ?>"><?= $i ?></a>
-                <?php endfor; ?>
+				<a href="#">2017</a>
+				<a href="#">2016</a>
 			</div>
 			<div class="wrapper-months dragscroll">
 				<a href="#"> January </a>
@@ -35,7 +31,52 @@ $uri_segments = explode('/', $uri_path);
 	    <div class="wrapper-archive">
 			<div class="wrapper-year scrollbar-rail">
 				<div class="group">
-					<?= getmonth(); ?>
+					<ul>
+						<a class="year" href="#">
+							2017
+						</a>
+						<li> <a href="#"> January </a> </li>
+						<li> <a href="#"> February </a> </li>
+						<li> <a href="#"> March </a> </li>
+						<li> <a href="#"> April </a> </li>
+						<li> <a href="#"> May </a> </li>
+						<li> 
+							<a href="#" class="active"> June </a> 
+							<ul class="child">
+								<li> <a class="active" href="#">A news about Noble House </a> </li>
+								<li> <a href="#">Lorem Ipsum Dolor Sit Amet Cocuses Mundos Aegleious Kantortos </a> </li>
+								<li> <a href="#">A news about Noble House </a> </li>
+								<li> <a href="#">A news about Noble House </a> </li>
+							</ul>
+						</li>
+						<li> <a href="#"> July </a> </li>
+						<li> <a href="#"> August </a> </li>
+						<li> <a href="#"> September </a> </li>
+						<li> <a href="#"> October </a> </li>
+						<li> <a href="#"> November </a> </li>
+						<li> <a href="#"> December </a> </li>
+					</ul>
+				</div>
+				<div class="group">
+					<ul>
+						<a class="year" href="#">
+							2016
+						</a>
+						<li> <a href="#"> January </a> </li>
+						<li> <a href="#"> February </a> </li>
+						<li> <a href="#"> March </a> </li>
+						<li> <a href="#"> April </a> </li>
+						<li> <a href="#"> May </a> </li>
+						<li> 
+							<a href="#"> June </a> 
+						</li>
+						<li> <a href="#"> July </a> </li>
+						<li> <a href="#"> August </a> </li>
+						<li> <a href="#"> September </a> </li>
+						<li> <a href="#"> October </a> </li>
+						<li> <a href="#"> November </a> </li>
+						<li> <a href="#"> December </a> </li>
+					</ul>
 				</div>
 			</div>
 			<div class="wrapper-article scrollbar-rail">
