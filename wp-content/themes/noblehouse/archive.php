@@ -17,7 +17,6 @@ endif;
 	<?php wp_reset_postdata(); ?>
 	<?php else : ?>
 <?php endif;?>
-
 <link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/assets/css/rail-custom.css">
 <div class="background-b">
 	<?php get_template_part( 'nav/nav', 'side' ); ?>
@@ -79,6 +78,7 @@ endif;
 				<?php endif; ?>
 				<h2><?= $content[0]['title']; ?></h2>
 				<p><?= $content[0]['gallery']['content'] ?></p>
+				<!-- <div class="gradient-bottom"></div> -->
 			</div>
 			
 	    </div>
