@@ -646,7 +646,7 @@ textarea
 		max-height 100%
 		overflow auto
 		position relative
-		min-width 22%
+		min-width 20%
 		margin-right 50px
 		.group
 			.active
@@ -680,37 +680,31 @@ textarea
 								content '-'
 								margin-right 20px
 	.wrapper-article
-		max-width 33%
+		width 100%
 		max-height 100%
 		h2
 			font-family quickR
 			font-size 21px
 			margin-top 0
 			line-height 35px
-			max-width 97%
+			max-width 80%
 		p
 			font-size 13px
 			color #F3F4F4
 			line-height 25px
 			max-width: 80%;
 			font-family openR
-	.wrapper-gallery-article
-		width 40%
-		position relative
-		> div
-			height 100%
-			width 100%
-			.item
-				height 625px
+		.wrapper-gallery-article
+			margin-bottom 30px
+			width 80%
+			position relative
+			> div
 				width 100%
-				position relative
-				img
+				.item
 					width 100%
-					height 100%
-					object-fit cover
-					position absolute
-					left 0
-					top 0
+					position relative
+					img
+						width 100%
 .wrapper-archive-row
 	display none
 
@@ -1203,7 +1197,10 @@ textarea
 	align-items center
 	z-index: 9999;
 	text-align: center;
-
+.wrapper-archive-tablet
+	display none
+.pagination-archive
+	display none
 // -------------------------------------------------------------------------------------------------------------------------------------
 @media (min-width: 1200px)
 	.items-left-right.invert.putih 
@@ -1216,11 +1213,55 @@ textarea
 	.bullet-nav
 		visibility hidden	
 @media (max-width: 767px)
+	.owl-dots
+		margin-top: 10px !important
+	.pagination-archive
+		display flex
+		flex-direction row
+		justify-content space-between
+		margin-top 10px
+		a
+			color #f6f7f7
+			font-family quickR
+	.wrapper-archive-tablet
+		display block
+		margin-top 30px
+		.item-group
+			width 100%
+			color #f6f7f7
+			padding: 30px 0px;
+			border-bottom 1px solid rgba(255,255,255,0.5)
+			&:first-of-type
+				margin-top 0
+				padding-top 0
+			&:last-of-type
+				margin-bottom 0
+				//padding-bottom 0
+			img
+				width 100%
+			p
+				font-size: 13px;
+				color: #f3f4f4;
+				line-height: 25px;
+				font-family: openR;
+			a
+				display block
+				color inherit
+				font-family quickR
+				font-size 23px
+				margin 0 0 10px
+			.wrapper-gambar
+				margin-bottom: 15px;
+			h2
+				font-size 28px
+				font-family quickR
+				margin-bottom 15px
 	.wrapper-archive
+		display none
 		.wrapper-year
 			display none
 		.wrapper-article
-			max-width 50%
+			max-width 100%
 		.wrapper-gallery-article
 			width 50%
 	.background-b
@@ -1236,8 +1277,11 @@ textarea
 		.wrapper-years
 			width 100%
 			display flex
+			max-width 100%
+			overflow auto
 			flex-direction row
 			justify-content center
+			position relative
 			a
 				font-size: 21px;
 				color: #f3f4f4;
@@ -1248,7 +1292,7 @@ textarea
 				&.active
 					color #AD8A58 !important
 		.wrapper-months
-			-webkit-mask-image: -webkit-gradient(linear, left 90%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))
+			
 			display flex
 			flex-direction row
 			justify-content flex-start
@@ -1261,6 +1305,8 @@ textarea
 				font-family quickR
 				color inherit
 				margin 15px
+				&.active
+					color #AD8A58 !important
 		.gradient
 			position absolute
 			bottom 0
@@ -1319,24 +1365,26 @@ textarea
 				.item-right
 					margin-top 50px
 @media (max-width: 576px)
-	.wrapper-archive-row
-		margin-bottom 105px
 	.background-b
 		padding 75px 15px
 	.wrapper-archive
 		flex-wrap wrap-reverse
+		margin-top 0
 		.wrapper-article
 			max-width 100%
 			width 100%
-			max-height 400px
-			margin-top: 50px;
-		.wrapper-gallery-article
-			width 100%
-			height auto !important
-			.item
-				height 300px !important
-				img
-					width 100% !important
+			max-height unset
+			height auto
+			h2
+				max-width 95%
+			p
+				max-width 95%
+			.wrapper-gallery-article
+				width 95%
+				height auto !important
+				.item
+					img
+						width 100% !important
 	.logo-utama
 		width 140px
 	.top-right

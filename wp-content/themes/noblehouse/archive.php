@@ -1,7 +1,23 @@
 <?php get_header(); 
-$uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$uri_segments = explode('/', $uri_path);
+$content = array();
+$the_query = new WP_Query( array(
+  'posts_per_page' => 1,
+  'post_type' => 'post',
+  'status' => 'publish'
+)); 
+if ( have_posts() ) : 
+    $y = get_the_date('Y');
+    $m = get_the_date('m');
+endif;
 ?>
+<?php if ( $the_query->have_posts() ) : ?>
+	<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+		<?php $content[] = array("content" => get_the_content(), "title" => get_the_title(), "gallery" => get_fields()); ?>
+	<?php endwhile; ?>
+	<?php wp_reset_postdata(); ?>
+	<?php else : ?>
+<?php endif;?>
+
 <link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/assets/css/rail-custom.css">
 <div class="background-b">
 	<?php get_template_part( 'nav/nav', 'side' ); ?>
@@ -10,57 +26,61 @@ $uri_segments = explode('/', $uri_path);
 	        <h5>News & Promotion</h5>
 	    </div>
 	    <div class="wrapper-archive-row">
-			<div class="wrapper-years">
+			<div class="wrapper-years dragscroll">
 				<?php for ($i = last_post_year(); $i >= first_post_year(); $i--): ?>
-                	<a <?php if ($i == $uri_segments[2]): ?> class="active" <?php endif; ?> href="<?= get_year_link($i) ?>"><?= $i ?></a>
+                	<a <?php if ($i == $y): ?> class="active" <?php endif; ?> href="<?= get_year_link($i) ?>"><?= $i ?></a>
                 <?php endfor; ?>
 			</div>
 			<div class="wrapper-months dragscroll">
-				<a href="#"> January </a>
-				<a href="#"> February </a>
-				<a href="#"> March </a>
-				<a href="#"> April </a>
-				<a href="#"> May </a>
-				<a href="#" class="active"> June </a>
-				<a href="#"> July </a>
-				<a href="#"> August </a>
-				<a href="#"> September </a>
-				<a href="#"> October </a>
-				<a href="#"> November </a>
-				<a href="#"> December </a>
+				<?= getMonthByYear($y); ?>
 			</div>
 			<div class="leftg gradient"></div>
-			<div class="rightg gradient"></div>r
+			<div class="rightg gradient"></div>
 	    </div>
+
+		<div class="wrapper-archive-tablet">
+			<?php  if ( have_posts() ) : ?>
+        		<?php while( have_posts() ): the_post(); $field = get_fields(); ?>
+		            <?php $y = get_the_date('Y'); ?>
+		            <?php $m = get_the_date('m'); 
+		            $title = cut($field['content'], 200);
+		            ?>
+		            <?php $ID = get_the_ID();?>
+        			<div class="item-group">
+						<?php if($field['gallery'][0]['image']): ?>
+							<div class="wrapper-gambar">
+								<img src="<?= $field['gallery'][0]['image'] ?>">
+							</div>
+						<?php endif; ?>
+						<a href="<?= the_permalink(); ?>"><?= the_title(); ?></a>
+						<p><?= $title; ?></p>
+        			</div>
+		        <?php endwhile; ?>
+		    <?php endif; ?>
+		</div>
+		<?php get_template_part( 'nav/nav', 'pagination' ); ?>
 	    <div class="wrapper-archive">
 			<div class="wrapper-year scrollbar-rail">
 				<div class="group">
-					<?= getmonth(); ?>
+					<?= getNavbarArchive(); ?>
 				</div>
 			</div>
 			<div class="wrapper-article scrollbar-rail">
-				<h2>Nikolas Weinstein’s Jakarta  project pushes scale, and his design and installation team, to the limit</h2>
-				<p>an Francisco-based glass sculptor and designer Nikolas Weinstein is not completely comfortable with any of those terms. At least he said as much in a feature article in the Spring 2011 edition of the print magazine (GLASS #122). Weinstein's singular focus is to create large-scale, unorthodox glass sculptures that exist in conversation with the architectural spaces that house them. They also happen to do things you might never have imagined glass can do. Just before Christmas 2016, Weinstein and his team installed their largest and most complex sculpture yet in the lobby of a Jakarta, Indonesia, office building. Weinstein had been asked by the developers of the Noble House, a premier office tower in downtown Jakarta, to design something that would set their new building apart, and the results didn't disappoint.
-				Beyond scale and complexity, the project’s engineering team faced another, more location-specific challenge in the installation process. Indonesia, an archipelagic nation, is prone to frequent and intense seismic activity. In fact, just before the project’s launch, the country’s eastern province an Francisco-based glass sculptor and designer Nikolas Weinstein is not completely comfortable with any of those terms. At least he said as much in a feature article in the Spring 2011 edition of the print magazine (GLASS #122). Weinstein's singular focus is to create large-scale, unorthodox glass sculptures that exist in conversation with the architectural spaces that house them. They also happen to do things you might never have imagined glass can do. Just before Christmas 2016, Weinstein and his team installed their largest and most complex sculpture yet in the lobby of a Jakarta, Indonesia, office building. Weinstein had been asked by the developers of the Noble House, a premier office tower in downtown Jakarta, to design something that would set their new building apart, and the results didn't disappoint.
-				Beyond scale and complexity, the project’s engineering team faced another, more location-specific challenge in the installation process. Indonesia, an archipelagic nation, is prone to frequent and intense seismic activity. In fact, just before the project’s launch, the country’s eastern province an Francisco-based glass sculptor and designer Nikolas Weinstein is not completely comfortable with any of those terms. At least he said as much in a feature article in the Spring 2011 edition of the print magazine (GLASS #122). Weinstein's singular focus is to create large-scale, unorthodox glass sculptures that exist in conversation with the architectural spaces that house them. They also happen to do things you might never have imagined glass can do. Just before Christmas 2016, Weinstein and his team installed their largest and most complex sculpture yet in the lobby of a Jakarta, Indonesia, office building. Weinstein had been asked by the developers of the Noble House, a premier office tower in downtown Jakarta, to design something that would set their new building apart, and the results didn't disappoint.
-				Beyond scale and complexity, the project’s engineering team faced another, more location-specific challenge in the installation process. Indonesia, an archipelagic nation, is prone to frequent and intense seismic activity. In fact, just before the project’s launch, the country’s eastern province </p>
-			</div>
-			<div class="wrapper-gallery-article">
-				<div class="owl-carousel owl-theme">
-					<div class="item">
-						<img src="<?= get_template_directory_uri(); ?>/assets/img/bg-office.jpg">
-					</div>
-					<div class="item">
-						<img src="<?= get_template_directory_uri(); ?>/assets/img/bg-office.jpg">
-					</div>
-					<div class="item">
-						<img src="<?= get_template_directory_uri(); ?>/assets/img/bg-office.jpg">
-					</div>
-					<div class="item">
-						<img src="<?= get_template_directory_uri(); ?>/assets/img/bg-office.jpg">
+				<?php if ($content[0]['gallery']['gallery']): ?>
+				<div class="wrapper-gallery-article">
+					<div class="owl-carousel owl-theme">
+						<?php foreach($content[0]['gallery']['gallery'] as $image): ?>
+							<div class="item">
+								<img src="<?= $image['image'] ?>">
+							</div>
+						<?php endforeach; ?>
 					</div>
 				</div>
+				<?php endif; ?>
+				<h2><?= $content[0]['title']; ?></h2>
+				<p><?= $content[0]['gallery']['content'] ?></p>
 			</div>
+			
 	    </div>
 	   </div>
     <?php get_template_part( 'nav/nav', 'bottom' ); ?>

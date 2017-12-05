@@ -6,7 +6,7 @@
             <div class="container-accordion">
                 <div class="wrapper-header-accordion">
                     <h5>News & Promotion</h5>
-                    <span><a class="archive" href="#">ARCHIVE</a></span>
+                    <span><a class="archive" href="<?php echo get_year_link( last_post_year()); ?>">ARCHIVE</a></span>
                 </div>
                 <div class="wrapper-group-accordion">
                     <?php $rows = $field['news_content'];?>
