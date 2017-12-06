@@ -113,6 +113,20 @@ function last_post_year(){
   return date("Y", strtotime($post['post_date']));
 }
 
+function last_post_month(){
+  $args2 = array(
+      'numberposts' => 1,
+      'order' => 'DESC',
+      'post_status' => 'publish',
+      'post_type' => 'post'
+  );
+
+  $recent_posts = wp_get_recent_posts($args2); 
+
+  $post = $recent_posts[0];
+  return date("m", strtotime($post['post_date']));
+}
+
 function first_post_year(){
   $args2 = array(
       'numberposts' => 1,

@@ -39,7 +39,7 @@ endif;
 
 		<div class="wrapper-archive-tablet">
 			<?php  if ( have_posts() ) : ?>
-        		<?php while( have_posts() ): the_post(); $field = get_fields(); ?>
+        		<?php while( have_posts() ): the_post(); $field = get_fields(); if ($m != get_the_date('m')) continue;?>
 		            <?php $y = get_the_date('Y'); ?>
 		            <?php $m = get_the_date('m'); 
 		            $title = cut($field['content'], 200);
