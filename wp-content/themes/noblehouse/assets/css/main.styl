@@ -50,6 +50,21 @@ body
 	font-kerning: normal;	
 	overflow-x hidden
 	
+
+#myVideo
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background-size: 100% 100%;
+	background-color: black;
+	//background-image: /* our video */;
+	background-position: center center;
+	background-size: contain;
+	object-fit: cover;
 // setting fade
 .fullpage-wrapper 
 	width: 100%!important;
@@ -622,6 +637,99 @@ textarea
 	color #AD8A58
 	&:hover
 		color #AD8A58
+.background-b
+	background #1B1D1D
+	min-height 100vh
+	padding 150px 15px
+	.wrapper-header-accordion
+		background inherit
+		margin-top 25px
+		h5
+			color white
+			font-size 36px
+			font-family quickR
+.right-rail > .scroll-content.scroll-scrolly_visible
+	left 0 !important
+	margin-left 0 !important
+.wrapper-archive
+	display flex
+	flex-direction row
+	width 100%
+	max-height 630px
+	margin-top 30px
+	.wrapper-year
+		max-height 100%
+		overflow auto
+		position relative
+		min-width 20%
+		margin-right 50px
+		.group
+			.active
+				color #AD8A58 !important
+				&:hover
+					text-decoration none
+			ul
+				list-style-type none
+				padding 0
+				font-family quickR
+				color #F3F4F4
+				.year
+					font-size 21px
+					color #F3F4F4
+					margin-bottom 10px
+					display block
+				li
+					a
+						line-height 27px
+						color #F3F4F4
+						font-size 13px
+						font-family inherit
+					ul
+						li
+							max-width 230px
+							display flex
+							flex-wrap nowrap
+							flex-direction row
+							align-items baseline
+							&:before
+								content '-'
+								margin-right 20px
+	.wrapper-article
+		width 100%
+		max-height 100%
+		h2
+			font-family quickR
+			font-size 21px
+			margin-top 0
+			line-height 35px
+			max-width 80%
+		p
+			font-size 13px
+			color #F3F4F4
+			line-height 25px
+			max-width: 80%;
+			font-family openR
+		.wrapper-gallery-article
+			margin-bottom 30px
+			width 80%
+			position relative
+			> div
+				width 100%
+				.item
+					width 100%
+					position relative
+					img
+						width 100%
+.gradient-bottom
+	content ''
+	position absolute
+	bottom 0
+	width 100%
+	height 100px
+	background linear-gradient(to bottom, rgba(27,29,29,0), rgba(27,29,29,1))
+.wrapper-archive-row
+	display none
+
 #fullpage-news
 	.container-accordion
 		background #1B1D1D
@@ -1099,6 +1207,17 @@ textarea
 // .fp-scroller
 // 	height 100% !important
 
+.loader
+	width 100px !important
+	position absolute
+	top 0
+	left 0
+	bottom 0
+	right 0	
+	display none
+	margin auto
+	opacity 0
+
 #loading
 	width: 100%;
 	height: 100%;
@@ -1111,7 +1230,10 @@ textarea
 	align-items center
 	z-index: 9999;
 	text-align: center;
-
+.wrapper-archive-tablet
+	display none
+.pagination-archive
+	display none
 // -------------------------------------------------------------------------------------------------------------------------------------
 @media (min-width: 1200px)
 	.items-left-right.invert.putih 
@@ -1124,6 +1246,111 @@ textarea
 	.bullet-nav
 		visibility hidden	
 @media (max-width: 767px)
+	.owl-dots
+		margin-top: 10px !important
+	.pagination-archive
+		display flex
+		flex-direction row
+		justify-content space-between
+		margin-top 10px
+		a
+			color #f6f7f7
+			font-family quickR
+	.wrapper-archive-tablet
+		display block
+		margin-top 30px
+		.item-group
+			width 100%
+			color #f6f7f7
+			padding: 30px 0px;
+			border-bottom 1px solid rgba(255,255,255,0.5)
+			&:first-of-type
+				margin-top 0
+				padding-top 0
+			&:last-of-type
+				margin-bottom 0
+				//padding-bottom 0
+			img
+				width 100%
+			p
+				font-size: 13px;
+				color: #f3f4f4;
+				line-height: 25px;
+				font-family: openR;
+			a
+				display block
+				color inherit
+				font-family quickR
+				font-size 23px
+				margin 0 0 10px
+			.wrapper-gambar
+				margin-bottom: 15px;
+			h2
+				font-size 28px
+				font-family quickR
+				margin-bottom 15px
+	.wrapper-archive
+		display none
+		.wrapper-year
+			display none
+		.wrapper-article
+			max-width 100%
+		.wrapper-gallery-article
+			width 50%
+	.background-b
+		padding 100px 15px
+	.wrapper-archive-row
+		margin-top 30px
+		display flex
+		flex-direction column
+		justify-content center
+		width 100%
+		color #F6F7F7
+		position relative
+		.wrapper-years
+			width 100%
+			display flex
+			max-width 100%
+			overflow auto
+			flex-direction row
+			justify-content center
+			position relative
+			a
+				font-size: 21px;
+				color: #f3f4f4;
+				font-family quickR
+				display: inline-block;
+				margin 0 20px
+				color inherit
+				&.active
+					color #AD8A58 !important
+		.wrapper-months
+			
+			display flex
+			flex-direction row
+			justify-content flex-start
+			align-items baseline
+			max-width 100%
+			overflow auto
+			position relative
+			a
+				display inline-block
+				font-family quickR
+				color inherit
+				margin 15px
+				&.active
+					color #AD8A58 !important
+		.gradient
+			position absolute
+			bottom 0
+			width 50px
+			height 48px
+		.leftg
+			background linear-gradient(to right, rgba(27,29,29,1), rgba(27,29,29,0))
+			left 0
+		.rightg
+			right 0
+			background linear-gradient(to left, rgba(27,29,29,1), rgba(27,29,29,0))
 	#fullpage-news
 		.container-accordion
 			margin-top 0
@@ -1171,6 +1398,26 @@ textarea
 				.item-right
 					margin-top 50px
 @media (max-width: 576px)
+	.background-b
+		padding 75px 15px
+	.wrapper-archive
+		flex-wrap wrap-reverse
+		margin-top 0
+		.wrapper-article
+			max-width 100%
+			width 100%
+			max-height unset
+			height auto
+			h2
+				max-width 95%
+			p
+				max-width 95%
+			.wrapper-gallery-article
+				width 95%
+				height auto !important
+				.item
+					img
+						width 100% !important
 	.logo-utama
 		width 140px
 	.top-right
@@ -1319,3 +1566,6 @@ textarea
 				margin-left -5px
 				li
 					padding 5px
+// @media (max-width: 390px)
+// 	.wrapper-archive-row .wrapper-months:before,.wrapper-archive-row .wrapper-months:after
+// 		top 233px

@@ -1,10 +1,10 @@
-<?php global $field; ?>
+<?php global $field; $img;?>
 <div class="item-left">
     <h2><?= $field['header'] ?></h2>
     <ul class="tab-container nav nav-pills">
         <?php $rows = get_field('tab_type'); ?>
-        <?php if($rows): $i2 = 1; foreach($rows as $row): ?>
-            <li class="<?php echo '', ($i2 == 1 ? 'active' : ''); ?>"><a data-toggle="pill"  data-target="#<?= trimSpace($row['header_tab']); ?>"><?= $row['header_tab']; ?></a></li>
+        <?php if($rows): $i2 = 1; foreach($rows as $key => $row): if ($key == 0)$img=$row['image'];?>
+            <li class="<?php echo '', ($i2 == 1 ? 'active' : ''); ?>"><a class="pil" data-toggle="pill" data-image="<?= $row['image'] ?>" data-target="#<?= trimSpace($row['header_tab']); ?>"><?= $row['header_tab']; ?></a></li>
         <?php $i2++; endforeach; endif;?>
     </ul>
     <div class="tab-content">
@@ -17,5 +17,6 @@
     </div>
 </div>
 <div class="item-right img-right">
-   <img src="<?= $field['image_right']; ?>">
+    <img src="<?= $img; ?>">
+    <img class="loader" src="<?= get_template_directory_uri(); ?>/assets/img/loader/Eclipse.svg">
 </div>

@@ -97,3 +97,318 @@ function trimSpecial($str){
 	$vars = preg_replace("/[^A-Za-z0-9]/", "", $str);
 	return $vars;
 }
+
+
+function last_post_year(){
+  $args2 = array(
+      'numberposts' => 1,
+      'order' => 'DESC',
+      'post_status' => 'publish',
+      'post_type' => 'post'
+  );
+
+  $recent_posts = wp_get_recent_posts($args2); 
+
+  $post = $recent_posts[0];
+  return date("Y", strtotime($post['post_date']));
+}
+
+function last_post_month(){
+  $args2 = array(
+      'numberposts' => 1,
+      'order' => 'DESC',
+      'post_status' => 'publish',
+      'post_type' => 'post'
+  );
+
+  $recent_posts = wp_get_recent_posts($args2); 
+
+  $post = $recent_posts[0];
+  return date("m", strtotime($post['post_date']));
+}
+
+function first_post_year(){
+  $args2 = array(
+      'numberposts' => 1,
+      'order' => 'ASC',
+      'post_status' => 'publish',
+      'post_type' => 'post'
+  );
+
+  $recent_posts = wp_get_recent_posts($args2); 
+
+  $post = $recent_posts[0];
+  return date("Y", strtotime($post['post_date']));
+}
+
+function getNavbarArchive(){
+    global $wpdb, $wp_locale;
+    $getyear;
+    $post = array();
+    $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $yearliest_year = $wpdb->get_results(
+        "SELECT YEAR(post_date) AS year 
+         FROM $wpdb->posts 
+         WHERE post_status = 'publish' 
+         AND post_type = 'post'
+         ORDER BY post_date 
+         DESC LIMIT 1
+    ");
+     if ( have_posts() ) : 
+        $i = 0;
+        while( have_posts() ) : the_post();
+            $id = get_the_ID();
+            $link = get_permalink($id) ;
+            $title = get_the_title();
+            $getyear = get_the_date('Y');
+            $post[] = array("link" => $link, "title" => $title); 
+            $i++;
+        endwhile;
+    endif;
+
+    if($yearliest_year){
+        $this_year = first_post_year();
+        $months = array(1 => "January", 2 => "February", 3 => "March" , 4 => "April", 5 => "May", 6 => "June", 7 => "July", 8 => "August", 9 => "September", 10 => "October", 11 => "November", 12 => "December");
+        $current_year = $yearliest_year[0]->year;
+
+        while($current_year >= $this_year){
+            $link_year = get_bloginfo('url') . "/" . $current_year . "/";
+            echo "<ul>";
+
+            if ($getyear == $current_year){
+                echo "<a href='' class='year active'>" . $current_year . "</a>";
+            }else{
+                echo "<a href='".$link_year."' class='year'>" . $current_year . "</a>";
+            }
+
+            $ujung = 12;
+            foreach(array_reverse($months) as $month_num => $month){
+                //Checks to see if a month a has posts
+                if($search_month = $wpdb->query(
+                        "SELECT MONTHNAME(post_date) as month 
+                            FROM $wpdb->posts  
+                            WHERE MONTHNAME(post_date) = '$month'
+                            AND YEAR(post_date) = $current_year 
+                            AND post_type = 'post'
+                            AND post_status = 'publish'
+                            order by post_date desc
+                            LIMIT 1 
+                ")){
+                   
+                    //Month has post -> link it
+                    $link = get_bloginfo('url') . "/" . $current_year . "/" . $ujung."/";
+
+                    if ($actual_link == $link){
+                         echo "<li><a class='active' href='#'>";
+                         echo "<span class='archive-month'>" . $month . "</span>";
+                         echo "<ul class='child'>";
+                         foreach ($post as $key) {
+                             echo "<li><a href='".$key['link']."'>".$key['title']."</a></li>";
+                         }
+                         echo "</ul></a></li>";
+                    }else{
+                         echo "<li><a href='".$link."'><span class='archive-month'>" . $month . "</span></a></li>";
+                    }
+                   
+                }else{
+
+                    //Month does not have post -> just print it
+
+                    // echo "<li>
+                    //         <span class='archive-month'>" . $month . "</span>
+
+                    //       </li>";
+                }
+                $ujung--;
+            }
+
+            echo "</ul>";
+
+            $current_year--;
+        }
+
+    }else{
+        echo "No Posts Found.";
+
+    }
+}
+
+function getNavbarSingle(){
+    global $wpdb, $wp_locale;
+    $getyear;
+    $post = array();
+    $yearliest_year = $wpdb->get_results(
+        "SELECT YEAR(post_date) AS year , MONTH(post_date) AS month
+         FROM $wpdb->posts 
+         WHERE post_status = 'publish' 
+         AND post_type = 'post'
+         ORDER BY post_date 
+         DESC LIMIT 1
+    ");
+
+     if ( have_posts() ) : 
+        while( have_posts() ) : the_post();
+            $y = get_the_date('Y');
+            $m = get_the_date('m');
+            $ID = get_the_ID();
+        endwhile;
+    endif;
+
+    $args = array(
+        'post_type' => 'post',
+        'status' => 'publish',
+        'date_query' => array(
+            array(
+                'month' => $m,
+                'year' => $y
+            )
+        )
+    );
+
+    $query = new WP_Query( $args );
+    if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            $id = get_the_ID();
+            $link = get_permalink($id) ;
+            $title = get_the_title();
+            $getyear = get_the_date('Y');
+            $post[] = array("link" => $link, "title" => $title, "id" => $id); 
+        }
+     
+    }
+    wp_reset_query();
+
+    if($yearliest_year){
+        $this_year = first_post_year();
+        $months = array(1 => "January", 2 => "February", 3 => "March" , 4 => "April", 5 => "May", 6 => "June", 7 => "July", 8 => "August", 9 => "September", 10 => "October", 11 => "November", 12 => "December");
+        $current_year = $yearliest_year[0]->year;
+        while($current_year >= $this_year){
+            $link_year = get_bloginfo('url') . "/" . $current_year . "/";
+            echo "<ul>";
+
+            if ($y == $current_year){
+                echo "<a href='#' class='year active'>" . $current_year . "</a>";
+            }else{
+                echo "<a href='".$link_year."' class='year'>" . $current_year . "</a>";
+            }
+
+            $ujung = 12;
+            foreach(array_reverse($months) as $month_num => $month){
+                //Checks to see if a month a has posts
+                if($search_month = $wpdb->query(
+                        "SELECT MONTHNAME(post_date) as month 
+                            FROM $wpdb->posts  
+                            WHERE MONTHNAME(post_date) = '$month'
+                            AND YEAR(post_date) = $current_year 
+                            AND post_type = 'post'
+                            AND post_status = 'publish'
+                            order by post_date desc
+                            LIMIT 1 
+                ")){
+                   
+                    //Month has post -> link it
+                    $link = get_bloginfo('url') . "/" . $current_year . "/" . $ujung."/";
+                    if ($ujung == $m && $y == $current_year){
+                         echo "<li><a class='active' href='#'>";
+                         echo "<span class='archive-month'>" . $month . "</span>";
+                         echo "<ul class='child'>";
+                         foreach ($post as $key) {
+                            $status = $ID == $key['id'] ? 'active' : '';
+                             echo "<li><a class='".$status."' href='".$key['link']."'>".$key['title']."</a></li>";
+                         }
+                         echo "</ul></a></li>";
+                    }else{
+                         echo "<li><a href='".$link."'><span class='archive-month'>" . $month . "</span></a></li>";
+                    }
+                   
+                }else{
+
+                    //Month does not have post -> just print it
+
+                    // echo "<li>
+                    //         <span class='archive-month'>" . $month . "</span>
+
+                    //       </li>";
+                }
+                $ujung--;
+            }
+
+            echo "</ul>";
+
+            $current_year--;
+        }
+
+    }else{
+        echo "No Posts Found.";
+
+    }
+}
+function getMonthByYear($year){
+    global $wpdb, $m, $y;
+      $months = array(1 => "January", 2 => "February", 3 => "March" , 4 => "April", 5 => "May", 6 => "June", 7 => "July", 8 => "August", 9 => "September", 10 => "October", 11 => "November", 12 => "December");
+      $ujung = 12;
+       foreach(array_reverse($months) as $month_num => $month){
+        if($search_month = $wpdb->query(
+                "SELECT MONTHNAME(post_date) as month 
+                    FROM $wpdb->posts  
+                    WHERE MONTHNAME(post_date) = '$month'
+                    AND YEAR(post_date) = $year 
+                    AND post_type = 'post'
+                    AND post_status = 'publish'
+                    order by post_date desc
+                    LIMIT 1 
+        ")){
+           
+            $link = get_bloginfo('url') . "/" . $year . "/" . $ujung."/";
+            if ($ujung == $m && $y == $year){
+                 echo "<a class='active' href='".$link."'>";
+                 echo $month;
+                 echo "</a>";
+            }else{
+                 echo "<a href='".$link."'>" . $month . "</a>";
+            }
+           
+        }else{
+
+            //Month does not have post -> just print it
+
+            // echo "<li>
+            //         <span class='archive-month'>" . $month . "</span>
+
+            //       </li>";
+        }
+        $ujung--;
+    }
+}
+
+function show12(){
+    global $wpdb;
+    // get years that have posts
+    $years = $wpdb->get_results( "SELECT YEAR(post_date) AS year FROM wp_posts WHERE post_type = 'post' AND post_status = 'publish' GROUP BY year DESC" );
+
+foreach ( $years as $year ) {
+    // get posts for each year
+    $posts_this_year = $wpdb->get_results( "SELECT post_title FROM wp_posts WHERE post_type = 'post' AND post_status = 'publish' AND YEAR(post_date) = '" . $year->year . "'" );
+
+    echo '<h2>' . $year->year . '</h2><ul>';
+    foreach ( $posts_this_year as $post ) {
+        echo '<li>' . $post->post_title . '</li>';
+    }
+    echo '</ul>';
+}
+}
+
+function cut($string, $your_desired_width) {
+  $parts = preg_split('/([\s\n\r]+)/', $string, null, PREG_SPLIT_DELIM_CAPTURE);
+  $parts_count = count($parts);
+
+  $length = 0;
+  $last_part = 0;
+  for (; $last_part < $parts_count; ++$last_part) {
+    $length += strlen($parts[$last_part]);
+    if ($length > $your_desired_width) { break; }
+  }
+
+  return implode(array_slice($parts, 0, $last_part)).'...';
+}

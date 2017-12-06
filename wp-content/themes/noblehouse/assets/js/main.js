@@ -432,7 +432,18 @@ $(document).ready(function() {
 	}
 
 
-	
+	$(".pil").click(function(event) {
+		var img = $(this).closest('.item-left').siblings('.item-right').find('img').first()
+		var name = $(this).data('image')
+		var tl = new TimelineMax();
+		var loader = $(this).closest('.item-left').siblings('.item-right').find('.loader')
+		$(img).attr('src', name);
+		tl.set(loader, {display:'block'})
+		.set(loader,{opacity:1})
+		$(img).on('load', function(){
+			$(loader).css('display', 'none');
+		});
+	});
 
 	$(".wrapper-item-accordion").click(function(event) {
 		var parent = $(this).closest('.section')
@@ -546,23 +557,29 @@ $(document).ready(function() {
 
 	$("#close-nav").click(function(event) {
 		$(".side-nav").removeClass('active')
-	 	$.fn.fullpage.setMouseWheelScrolling(true);
-    	$.fn.fullpage.setAllowScrolling(true);
+		if ($(".section").length){
+		 	$.fn.fullpage.setMouseWheelScrolling(true);
+	    	$.fn.fullpage.setAllowScrolling(true);
+	    }
     	$(".contact-nav").removeClass('active')
     	TweenMax.to($(".menu-ul"), .10, {opacity:1})
     	TweenMax.to($(".bg-black"),.5, {opacity:0,right:'-100vw'})
 	});
 	$(".open-nav").click(function(event) {
 		$(".side-nav").addClass('active')
-		$.fn.fullpage.setMouseWheelScrolling(false);
-		$.fn.fullpage.setAllowScrolling(false);
+		if ($(".section").length){
+			$.fn.fullpage.setMouseWheelScrolling(false);
+			$.fn.fullpage.setAllowScrolling(false);
+		}
 		TweenMax.to($(".bg-black"),.5, {opacity:1,right:0})
 	});
 
 	$(".bg-black").click(function(event) {
 		$(".side-nav").removeClass('active')
-	 	$.fn.fullpage.setMouseWheelScrolling(true);
-    	$.fn.fullpage.setAllowScrolling(true);
+		if ($(".section").length){
+		 	$.fn.fullpage.setMouseWheelScrolling(true);
+	    	$.fn.fullpage.setAllowScrolling(true);
+	    }
     	TweenMax.to($(".bg-black"),.5, {opacity:0,right:'-100vw'})
     	$(".contact-nav").removeClass('active')
 		TweenMax.to($(".menu-ul"), .10, {opacity:1})
@@ -617,6 +634,19 @@ $(document).ready(function() {
  		if ($(".gallery-tab-slider").length)
 		initBulletSlideGallery();
 		startAutoScroll()
+		if ($(".wrapper-archive").length){
+			$('.wrapper-year').scrollbar();
+			$('.wrapper-years').scrollbar();
+			$('.wrapper-article').scrollbar();
+			$('.wrapper-months').scrollbar();
+			$(".owl-carousel").owlCarousel({
+				loop:true,
+				margin:10,
+				nav:false,
+				bullet:true,
+				items:1
+			});
+		}
 	}
 	init();
 });

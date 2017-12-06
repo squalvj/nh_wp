@@ -10,6 +10,7 @@
     $query = new WP_Query( $args );
 ?>
     <?php get_template_part( 'nav/nav', 'side' ); ?>
+    <!-- session gourmet cuma bisa 1 -->
     <div id="fullpage-lifestyle" class="fullpg">
         <?php if ( $query->have_posts() ) : ?>
             <?php while( $query->have_posts() ) : $query->the_post();?>
