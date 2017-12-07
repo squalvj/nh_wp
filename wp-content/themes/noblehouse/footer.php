@@ -3,6 +3,23 @@
 				<img src="<?= get_template_directory_uri(); ?>/assets/img/logo_hitam.svg">
 			</div>
 		<?php } ?>
+
+		<?php if (is_archive() || is_single()): ?>
+			<?php
+			    $field = get_fields(4);
+			?>
+			<div class="footer-archive">
+				<div>
+					<a target="_blank" href="<?= $field['enquiries_link']; ?>">enquiries</a>
+			        <a target="_blank" href="<?= $field['facebook_link']; ?>">facebook</a>
+			        <a target="_blank" href="<?= $field['twitter_link']; ?>">twitter</a>
+			        <a target="_blank" href="<?= $field['instagram_link']; ?>">instagram</a>
+			    </div>
+			    <div>
+			        <h5>©2015 Noble House. All Right Reserved.</h5>
+			   	</div>	
+			</div>
+		<?php endif; ?>
 		
 		<script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/bower_components/jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

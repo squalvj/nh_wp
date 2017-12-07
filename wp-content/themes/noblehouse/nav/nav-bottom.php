@@ -19,21 +19,23 @@
         <img src="<?= get_template_directory_uri(); ?>/assets/img/logo_hitam.svg">
     </button>
 </div>
-<div class="bottom-left change">
-    <a target="_blank" href="<?= $field['enquiries_link']; ?>">enquiries</a>
-    <a target="_blank" href="<?= $field['facebook_link']; ?>">facebook</a>
-    <a target="_blank" href="<?= $field['twitter_link']; ?>">twitter</a>
-    <a target="_blank" href="<?= $field['instagram_link']; ?>">instagram</a>
-</div>
-<div class="bottom-left change">
-    <a target="_blank" class="black-t" href="<?= $field['enquiries_link']; ?>">enquiries</a>
-    <a target="_blank" class="black-t" href="<?= $field['facebook_link']; ?>">facebook</a>
-    <a target="_blank" class="black-t" href="<?= $field['twitter_link']; ?>">twitter</a>
-    <a target="_blank" class="black-t" href="<?= $field['instagram_link']; ?>">instagram</a>
-</div>
-<div class="bottom-right change">
-    <h5>©2015 Noble House. All Right Reserved.</h5>
-</div>
-<div class="bottom-right change">
-    <h5 class="black-t">©2015 Noble House. All Right Reserved.</h5>
-</div>
+<?php if (!is_archive() && !is_single()): ?>
+    <div class="bottom-left change">
+        <a target="_blank" href="<?= $field['enquiries_link']; ?>">enquiries</a>
+        <a target="_blank" href="<?= $field['facebook_link']; ?>">facebook</a>
+        <a target="_blank" href="<?= $field['twitter_link']; ?>">twitter</a>
+        <a target="_blank" href="<?= $field['instagram_link']; ?>">instagram</a>
+    </div>
+    <div class="bottom-left change">
+        <a target="_blank" class="black-t" href="<?= $field['enquiries_link']; ?>">enquiries</a>
+        <a target="_blank" class="black-t" href="<?= $field['facebook_link']; ?>">facebook</a>
+        <a target="_blank" class="black-t" href="<?= $field['twitter_link']; ?>">twitter</a>
+        <a target="_blank" class="black-t" href="<?= $field['instagram_link']; ?>">instagram</a>
+    </div>
+    <div class="bottom-right change">
+        <h5>©2015 Noble House. All Right Reserved.</h5>
+    </div>
+    <div class="bottom-right change">
+        <h5 class="black-t">©2015 Noble House. All Right Reserved.</h5>
+    </div>
+<?php endif; ?>

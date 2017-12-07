@@ -640,7 +640,9 @@ textarea
 .background-b
 	background #1B1D1D
 	min-height 100vh
-	padding 150px 15px
+	padding 120px 15px
+	.container
+		padding 0 50px
 	.wrapper-header-accordion
 		background inherit
 		margin-top 25px
@@ -702,16 +704,16 @@ textarea
 			font-size 21px
 			margin-top 0
 			line-height 35px
-			max-width 80%
+			max-width 95%
 		p
 			font-size 13px
 			color #F3F4F4
 			line-height 25px
-			max-width: 80%;
+			max-width: 95%;
 			font-family openR
 		.wrapper-gallery-article
 			margin-bottom 30px
-			width 80%
+			width 95%
 			position relative
 			> div
 				width 100%
@@ -1234,6 +1236,25 @@ textarea
 	display none
 .pagination-archive
 	display none
+
+.footer-archive
+	display flex
+	justify-content space-between
+	padding 15px 30px
+	background #1b1d1d
+	a
+		margin 0 15px
+		font-family openR
+		font-size 10px
+		text-transform uppercase
+		color white
+		letter-spacing 1px
+		&:hover
+			text-decoration none
+	h5
+		font-family openL
+		font-size 8px
+		color white
 // -------------------------------------------------------------------------------------------------------------------------------------
 @media (min-width: 1200px)
 	.items-left-right.invert.putih 
@@ -1246,6 +1267,9 @@ textarea
 	.bullet-nav
 		visibility hidden	
 @media (max-width: 767px)
+	.background-b
+		.container
+			padding 0 15px
 	.owl-dots
 		margin-top: 10px !important
 	.pagination-archive
@@ -1398,6 +1422,8 @@ textarea
 				.item-right
 					margin-top 50px
 @media (max-width: 576px)
+	.footer-archive
+		display none
 	.background-b
 		padding 75px 15px
 	.wrapper-archive
