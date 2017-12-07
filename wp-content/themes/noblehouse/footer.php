@@ -1,6 +1,7 @@
-		<?php if( is_page()) {?>
+		<?php if( is_page()) {
+			$field = get_fields(4);?>
 			<div id="loading">
-				<img src="<?= get_template_directory_uri(); ?>/assets/img/logo_hitam.svg">
+				<img src="<?= $field['loading_image']; ?>">
 			</div>
 		<?php } ?>
 

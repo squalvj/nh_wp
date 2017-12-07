@@ -6,7 +6,7 @@
     <?php get_template_part( 'nav/nav', 'side' ); ?>
     <div id="fullpage">
       <div class="section home" data-name="Home">
-        <video id="myVideo" loop="loop" poster="<?= $field['poster']; ?>" data-autoplay="" style="background-image: <?= $field['poster']; ?>">
+        <video id="myVideo" loop="loop" poster="<?= $field['poster']; ?>" data-autoplay=""?>">
           <source src="<?= $field['background_video']; ?>" type="video/mp4">
         </video>
         <div class="container">

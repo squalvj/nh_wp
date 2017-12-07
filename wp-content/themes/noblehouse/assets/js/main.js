@@ -17,7 +17,6 @@ $(document).ready(function() {
 			css3: true,
 			scrollingSpeed: 2000,
 			scrollOverflow: true,
-			anchors: ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'],
 			onLeave: function(index, nextIndex, direction) {
 			    var el = $(this);
 			    var child = el.find('.wrapper-content').children()
