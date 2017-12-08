@@ -6,9 +6,11 @@
     <?php get_template_part( 'nav/nav', 'side' ); ?>
     <div id="fullpage">
       <div class="section home" data-name="Home">
-        <video id="myVideo" loop="loop" poster="<?= $field['poster']; ?>" data-autoplay=""?>">
-          <source src="<?= $field['background_video']; ?>" type="video/mp4">
-        </video>
+        <?php if ($field['background_video']): ?>
+          <video id="myVideo" loop="loop" poster="<?= $field['poster']; ?>" data-autoplay=""?>">
+            <source src="<?= $field['background_video']; ?>" type="video/mp4">
+          </video>
+        <?php endif; ?>
         <div class="container">
           <div class="wrapper-content"><img class="logo-utama" src="<?= get_template_directory_uri(); ?>/assets/img/logo.svg"><a href="#"><img src="<?= get_template_directory_uri(); ?>/assets/img/play-ico.svg"></a></div>
         </div>
