@@ -433,7 +433,7 @@ $(document).ready(function() {
 
 	$(".pil").click(function(event) {
 		var img = $(this).closest('.item-left').siblings('.item-right').find('img').first()
-		img.css('display', 'none');
+		img.css('opacity', '0');
 		var name = $(this).data('image')
 		var tl = new TimelineMax();
 		var loader = $(this).closest('.item-left').siblings('.item-right').find('.loader')
@@ -441,7 +441,7 @@ $(document).ready(function() {
 		tl.set(loader, {display:'block'})
 		.set(loader,{opacity:1})
 		$(img).on('load', function(){
-			img.css('display', 'block');
+			img.css('opacity', '1');
 			$(loader).css('display', 'none');
 		});
 	});
