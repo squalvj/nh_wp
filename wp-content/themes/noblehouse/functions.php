@@ -412,3 +412,12 @@ function cut($string, $your_desired_width) {
 
   return implode(array_slice($parts, 0, $last_part)).'...';
 }
+
+function sendEmail($to, $subject, $body){
+  // $to = 'sendto@example.com';
+  // $subject = 'The subject';
+  // $body = 'The email body content';
+  $headers = array('Content-Type: text/html; charset=UTF-8');
+   
+  wp_mail( $to, $subject, $body, $headers );
+}

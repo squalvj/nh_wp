@@ -10,12 +10,12 @@
         </div>
         <div class="contact-nav">
             <button id="back-contact"><img src="<?= get_template_directory_uri(); ?>/assets/img/arrow.svg"></button>
-            <form>
+            <form method="post" action="<?= get_page_link(134); ?>">
                 <input type="text" name="name" placeholder="Name">
                 <input type="email" name="email" placeholder="E-mail">
                 <input type="text" name="company" placeholder="Company">
                 <input type="text" name="address" placeholder="Address">
-                <textarea rows="5" placeholder="Requirement"></textarea>
+                <textarea name="msg" rows="5" placeholder="Requirement"></textarea>
                 <button class="btn-more" type="submit">SUBMIT</button>
             </form>
         </div>
