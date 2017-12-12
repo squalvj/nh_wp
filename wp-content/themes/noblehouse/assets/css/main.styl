@@ -346,7 +346,7 @@ textarea
 			position absolute
 			bottom: 38px;
 			right: 30px;
-			font-family openL
+			font-family openR
 			color rgba(255,255,255,0.8)
 			font-size 10px
 			margin-bottom 0
@@ -645,7 +645,7 @@ textarea
 .background-b
 	background #1B1D1D
 	min-height 100vh
-	padding 120px 15px
+	padding 120px 15px 30px
 	.container
 		padding 0 50px
 	.wrapper-header-accordion
@@ -748,12 +748,25 @@ textarea
 		.wrapper-group-accordion
 			background #1B1D1D
 			.wrapper-item-accordion
+				.header-accordions
+					font-family quickR
+					font-size 21px
+					position relative
+					z-index 3
+					//text-align left
+					opacity 1
+					//stransform translateX(20px)
+					text-align left
+					transition all .25s ease
+					line-height: 35px;
+					padding 0 15px
+					margin 0
+					transition-delay 1s
 				.scroll-element
 					opacity 0
 					transition all .25s ease
 				.wrapper-inside-item-accordion
 					transition all .25s ease
-					overflow auto
 					max-height 50vh
 					.header-accordion
 						font-family quickR
@@ -761,7 +774,7 @@ textarea
 						position relative
 						z-index 3
 						//text-align left
-						opacity 1
+						opacity 0
 						//stransform translateX(20px)
 						text-align left
 						transition all .25s ease
@@ -772,9 +785,15 @@ textarea
 					padding 10vh calc(100% - 600px) 10vh 100px
 					.scroll-element
 						opacity 1
-					.header-accordion
-						opacity 1
-						transition-delay 1s
+					.header-accordions
+						position absolute
+						transition-delay 0s
+						opacity 0
+					.wrapper-inside-item-accordion
+						overflow auto
+						.header-accordion
+							opacity 1
+							transition-delay 1s
 
 .modal
 	position fixed
@@ -1494,16 +1513,19 @@ textarea
 			.wrapper-group-accordion
 				.wrapper-item-accordion
 					z-index 10
+					padding 5vh 0
 					&.active
 						height 100vh
 						//height 100%
 						.wrapper-inside-item-accordion
-							overflow unset
+							overflow auto
 							z-index 11
+					&.shrink
+						padding 0
 					.wrapper-inside-item-accordion
 						z-index 1
 						max-height 80vh !important
-						overflow hidden !important
+						//overflow hidden !important
 		
 	.tab-type-content
 		margin-bottom 50px
@@ -1517,6 +1539,7 @@ textarea
 					padding 30px
 	.bullet-right
 		right 15px
+		display none
 		a
 			&:hover
 				width 15px
@@ -1610,6 +1633,27 @@ textarea
 				margin-left -5px
 				li
 					padding 5px
-// @media (max-width: 390px)
-// 	.wrapper-archive-row .wrapper-months:before,.wrapper-archive-row .wrapper-months:after
-// 		top 233px
+@-moz-document url-prefix()
+	.wrapper-year
+		width 30%
+	.wrapper-archive
+		.wrapper-article
+			width 70%
+			//overflow auto
+			max-height 100% !important
+			overflow: -moz-scrollbars-none !important
+	.container-accordion .wrapper-group-accordion .wrapper-item-accordion p
+		width 50%
+	.wrapper-group-accordion
+		overflow hidden
+	@media (max-width: 576px)
+		#fullpage-news
+			.container-accordion
+				margin-bottom: 0;
+				.wrapper-header-accordion
+					padding 30px
+				.wrapper-group-accordion
+					.wrapper-item-accordion
+						padding 50px 0 0 0
+		.shrink
+			padding 0 !important

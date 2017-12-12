@@ -12,6 +12,7 @@
                     <?php $rows = $field['news_content'];?>
                     <?php if($rows): foreach($rows as $row):?>
                         <div class="wrapper-item-accordion">
+                            <h1 class="header-accordions"><?= $row['header']; ?></h1>
                             <div class="wrapper-inside-item-accordion scrollbar-rail">
                                 <h1 class="header-accordion"><?= $row['header']; ?></h1>
                                 <p><?= $row['content']; ?></p>
