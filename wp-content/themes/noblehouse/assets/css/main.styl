@@ -237,6 +237,9 @@ textarea
 		-ms-transition: all .5s ease
 		-o-transition: all .5s ease
 		transition: all .5s ease
+		h2
+			font-family quickR
+			font-size 18px
 		#back-contact
 			position fixed
 			right -30px
@@ -345,7 +348,7 @@ textarea
 			right: 30px;
 			font-family openL
 			color rgba(255,255,255,0.8)
-			font-size 8px
+			font-size 10px
 			margin-bottom 0
 			
 
@@ -407,8 +410,10 @@ textarea
 	position fixed
 	h5
 		font-family openL
-		font-size 8px
+		font-size 10px
 		color white
+		margin 0
+		text-transform uppercase
 			
 .mouse
 	position fixed
@@ -561,9 +566,6 @@ textarea
 		.header-tab-content
 			min-height 0
 		.tab-type-content
-			min-height 400px
-			// -moz-osx-font-smoothing: grayscale !important;
-			// -webkit-font-smoothing: antialiased !important;
 			h2
 				font-family quickR
 				font-size 21px
@@ -759,7 +761,7 @@ textarea
 						position relative
 						z-index 3
 						//text-align left
-						opacity 0
+						opacity 1
 						//stransform translateX(20px)
 						text-align left
 						transition all .25s ease
@@ -800,7 +802,7 @@ textarea
 			color rgba(255,255,255,0.7)
 			margin 20px 0 30px
 		p
-			font-size 9px
+			font-size 13px
 			font-family openR
 			color rgba(255,255,255,0.7)
 			text-align center
@@ -1258,6 +1260,12 @@ textarea
 		font-family openL
 		font-size 8px
 		color white
+.fade
+	transform translateY(-10px)
+	transition all .8s ease !important
+.in
+	transform translateY(0px)
+	transition all .8s ease !important
 // -------------------------------------------------------------------------------------------------------------------------------------
 @media (min-width: 1200px)
 	.items-left-right.invert.putih 
@@ -1455,7 +1463,7 @@ textarea
 		display block
 	.link-inside
 		display flex
-		bottom 0
+		bottom 30px
 	.wrapper-kotak
 		> button
 			display flex
@@ -1496,9 +1504,7 @@ textarea
 						z-index 1
 						max-height 80vh !important
 						overflow hidden !important
-						
-						
-
+		
 	.tab-type-content
 		margin-bottom 50px
 	.container-accordion
@@ -1538,21 +1544,25 @@ textarea
 			height 100vh
 			width 100%
 	.side-nav
+		overflow auto
+		max-height 100vh
 		&.active
 			width 100vw
 			.contact-nav
 				top 110px
 				&.active
 					position absolute
+				#back-contact
+					position absolute
+					top -85px
 		.content-nav
 			min-height 100%
-			height 10px
+			height auto
 			width 100vw
 			background rgba(0,0,0,0.9)
 			padding 80px 30px 30px
-			overflow auto
 			p.copyright
-				bottom 8px
+				bottom 32px
 			.logo-text
 				visibility hidden
 				margin-bottom 15px
@@ -1561,6 +1571,11 @@ textarea
 				width 100%
 				content '';
 				display block
+			&:after
+				display block
+				content ''
+				min-height 100px
+				width 100%
 		.bg-black
 			display none !important
 	.bottom-left

@@ -18,7 +18,7 @@
                     <div class="tab-content header-tab-content">
                         <?php $rows = get_field('tab_layout'); ?>
                         <?php if($rows): $i = 1; foreach($rows as $row): ?>
-                            <h2 class="tab-pane fade <?php echo '', ($i == 1 ? 'active in' : ''); ?> Gourmet<?= trimSpecial($row['tab']) ?>"> <?= $row['header'] ?></h2>
+                            <h2 class="tab-pane <?php echo '', ($i == 1 ? 'active in' : ''); ?> Gourmet<?= trimSpecial($row['tab']) ?>"> <?= $row['header'] ?></h2>
                         <?php $i++; endforeach; endif; ?>
                     </div>
                     <ul class="tab-container nav nav-pills tab-lifestyle">

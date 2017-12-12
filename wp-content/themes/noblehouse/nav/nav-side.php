@@ -9,6 +9,7 @@
             <p>Jl. Dr. Ide Anak Agung Gede Agung Kav. E 4.2 No. 2, Jakarta 12950 Tel. +62 21 2978 3000 Fax. +62 21 2978 3001 marketing@noblehouse.co.id <br><br>PT Graha Lestari Internusa</p>
         </div>
         <div class="contact-nav">
+            <h2>Contact Us</h2>
             <button id="back-contact"><img src="<?= get_template_directory_uri(); ?>/assets/img/arrow.svg"></button>
             <form method="post" action="<?= get_page_link(134); ?>">
                 <input type="text" name="name" placeholder="Name">

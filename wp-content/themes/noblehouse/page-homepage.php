@@ -19,7 +19,7 @@
           <h5>scroll to skip video</h5>
         </div>
       </div>
-      <div class="section menu rel" data-name="Office">
+      <div class="section menu rel" data-name="mainmenu">
       <?= checkAnnouncment(); ?>
         <div class="bg">
           <img src="<?= $field['background_image'] ?>">

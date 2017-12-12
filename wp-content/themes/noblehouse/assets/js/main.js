@@ -33,7 +33,9 @@ $(document).ready(function() {
 			    });
 		  	},
 		  	afterLoad: function(anchorLink, index) {
-			    //muncul($(this))
+			    if ($(this).data('name') == "mainmenu"){
+			    	$.fn.fullpage.setAllowScrolling(false);
+			    }
 		  	},
 		  	afterRender(){
 		  		showHideLoading();
@@ -55,30 +57,19 @@ $(document).ready(function() {
 			    var el = $(this);
 			    var child = el.find('.items-left-right').children()
 			    var nextEl = el.parent().children().eq(nextIndex-1)
-			    ilangStagger(child,0)
+			    ilangStagger(child)
 			    var childrenNext = nextEl.find('.items-left-right').children()
 			    opacity(childrenNext)
 			   	munculStagger(childrenNext,.3)
-			   	// if (nextIndex == 1){
-			   	// 	stopAutoScroll();
-			   	// }
+
 			   	changeBulletNav(nextIndex)
 			   	var nextEl = $(".section").eq(nextIndex-1)
 			   	var invert = nextEl.find('.invert')
-
 			   	if (invert.length){
-			   		fadeInOut($(".top-left").first(), $(".top-left").last())
-			   		right($(".top-right").first(),$(".top-right").last() )
-			   		opacity2($(".bottom-left").first(), $(".bottom-left").last())
-			   		opacity2($(".bottom-right").first(), $(".bottom-right").last())
-			   		$(".bullet-right").addClass('invert')
+			   		invertIn();
 			   	}
 			   	else{
-			   		fadeInOut($(".top-left").last(), $(".top-left").first())
-			   		right($(".top-right").last(),$(".top-right").first() )
-			   		opacity2($(".bottom-left").last(), $(".bottom-left").first())
-			   		opacity2($(".bottom-right").last(), $(".bottom-right").first())
-			   		$(".bullet-right").removeClass('invert')
+			   		invertOut();
 			   	}
 
 		  	},
@@ -108,7 +99,7 @@ $(document).ready(function() {
 			    var el = $(this);
 			    var child = el.find('.items-left-right').children()
 			    var nextEl = el.parent().children().eq(nextIndex-1)
-			    ilangStagger(child,.5)
+			    ilangStagger(child)
 			    var childrenNext = nextEl.find('.items-left-right').children()
 			    opacity(childrenNext)
 			   	munculStagger(childrenNext,.3)
@@ -120,10 +111,11 @@ $(document).ready(function() {
 			   		fadeInOut($(".top-left").first(), $(".top-left").last())
 			   		right($(".top-right").first(),$(".top-right").last() )
 			   		opacity(accordion.find('.wrapper-header-accordion').children())
-			   		ilangStagger(el.find('.wrapper-header-accordion').children(), .3)
+			   		ilangStagger(el.find('.wrapper-header-accordion').children())
 			   		munculStagger(accordion.find('.wrapper-header-accordion').children(), .3)
 			   	}
 			   	else{
+			   		ilangStagger(el.find('.wrapper-header-accordion').children())
 			   		fadeInOut($(".top-left").last(), $(".top-left").first())
 			   		right($(".top-right").last(),$(".top-right").first() )
 			   	}
@@ -205,6 +197,22 @@ $(document).ready(function() {
 		clearInterval(el)
 	}
 
+	function invertIn(){
+   		fadeInOut($(".top-left").first(), $(".top-left").last())
+   		right($(".top-right").first(),$(".top-right").last() )
+   		opacity2($(".bottom-left").first(), $(".bottom-left").last())
+   		opacity2($(".bottom-right").first(), $(".bottom-right").last())
+   		$(".bullet-right").addClass('invert')
+	}
+
+	function invertOut(){
+		fadeInOut($(".top-left").last(), $(".top-left").first())
+		right($(".top-right").last(),$(".top-right").first() )
+		opacity2($(".bottom-left").last(), $(".bottom-left").first())
+		opacity2($(".bottom-right").last(), $(".bottom-right").first())
+		$(".bullet-right").removeClass('invert')
+	}
+
 
 	function setBulletSlide(el){
 		var index = parseInt(el.find('.active').data('index'))
@@ -214,18 +222,18 @@ $(document).ready(function() {
 	}
 
 	function fadeInOut(el, el2){
-		TweenMax.to(el, 1, {scale:2,delay:1,opacity:0,display:'none'})
-		TweenMax.to(el2, 1, {scale:1,delay:1,opacity:1,display:'block'})
+		TweenMax.to(el, 0, {scale:2,delay:1,opacity:0,display:'none'})
+		TweenMax.to(el2, 0, {scale:1,delay:1,opacity:1,display:'block'})
 	}
 
 	function right(el,el2){
-		TweenMax.to(el, 1, {x:150,opacity:0,delay:1})
-		TweenMax.to(el2, 1, {x:0,opacity:1,delay:1})
+		TweenMax.to(el, 0, {x:150,opacity:0,delay:1})
+		TweenMax.to(el2, 0, {x:0,opacity:1,delay:1})
 	}
 
 	function opacity2(el, el2){
-		TweenMax.to(el, 1, {opacity:0,delay:1,display:'none'})
-		TweenMax.to(el2, 1, {opacity:1,delay:1,display:'flex'})
+		TweenMax.to(el, 0, {opacity:0,delay:1,display:'none'})
+		TweenMax.to(el2, 0, {opacity:1,delay:1,display:'flex'})
 	}
 
 	function fadeIns(el){
@@ -388,12 +396,12 @@ $(document).ready(function() {
 		TweenMax.from(el, del, {opacity:0, y:-20 ,delay:2.1, ease: Power4.easeOut})
 	}
 
-	function ilangStagger(el,del){
-		TweenMax.staggerTo(el, .8, {y:40, opacity:0 ,ease: Back.easeIn.config(1.7)}, del)
+	function ilangStagger(el){
+		TweenMax.staggerTo(el, .8, {y:15, opacity:0,delay:.2})
 	}
 
 	function munculStagger(el,del){
-		TweenMax.staggerFrom(el, .5, {opacity:0, y:-20 ,delay:1.6, ease: Power4.easeOut},del)
+		TweenMax.staggerFrom(el, .5, {opacity:0, y:-20 ,delay:1.8},del)
 	}
 
 
@@ -603,6 +611,14 @@ $(document).ready(function() {
 	});
 
 	$(".btn-close-modal").click(function(event) {
+		TweenMax.to($(".modal"), 1, {opacity:0, display:'none'})
+	});
+
+	$(".wrapper-modal").click(function(event) {
+		event.stopPropagation()
+	});
+
+	$(".modal").click(function(event) {
 		TweenMax.to($(".modal"), 1, {opacity:0, display:'none'})
 	});
 
