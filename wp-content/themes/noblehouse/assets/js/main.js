@@ -463,7 +463,8 @@ $(document).ready(function() {
 			$.fn.fullpage.reBuild();
 		},10)
 		img.on('load', function(){
-			img.css('opacity', '1');
+			TweenMax.fromTo(img, 1, {opacity:0, y:-10}, {opacity:1, y:0,delay:.3})
+			//img.css('opacity', '1');
 			$(loader).css('display', 'none');
 			setTimeout(function(){
 				$.fn.fullpage.reBuild();
