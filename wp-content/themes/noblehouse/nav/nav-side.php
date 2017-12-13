@@ -11,9 +11,7 @@
         <div class="contact-nav">
             <h2>Contact Us</h2>
             <button id="back-contact"><img src="<?= get_template_directory_uri(); ?>/assets/img/arrow.svg"></button>
-            <form method="post" action="<?= get_page_link(134); ?>">
-                <?= do_shortcode('[contact-form-7 id="140" title="Contact form 1"]') ?>
-            </form>
+            <?= do_shortcode('[contact-form-7 id="140" title="Contact form 1"]') ?>
         </div>
         <ul class="menu-ul">
             <li><span>01</span><a href="<?= site_url(); ?>">Welcome</a></li>
