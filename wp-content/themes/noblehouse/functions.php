@@ -422,6 +422,11 @@ function sendEmail($to, $subject, $body){
   wp_mail( $to, $subject, $body, $headers );
 }
 
+//wysig editor add class
+// Register our callback to the appropriate filter
+add_filter( 'mce_buttons_3', 'my_mce_buttons_3' );
+
+
 // Callback function to insert 'styleselect' into the $buttons array
 function my_mce_buttons_3( $buttons ) {
   array_unshift( $buttons, 'styleselect' );

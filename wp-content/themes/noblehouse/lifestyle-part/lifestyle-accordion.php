@@ -11,7 +11,7 @@
                 <div class="wrapper-item-accordion">
                     <h1 class="header-accordion"><?= $row['header_accordion']; ?></h1>
                     <img src="<?= $row['background_accordion']; ?>" class="bg-accordion">
-                    <p><?= $row['content_accordion']; ?></p>
+                    <?= $row['content_accordion']; ?>
                     <button class="back-accordion">< ALL <?= $field['title'] ?></button>
                 </div>
             <?php endforeach; endif; ?>

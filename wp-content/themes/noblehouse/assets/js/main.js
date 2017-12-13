@@ -636,6 +636,12 @@ $(document).ready(function() {
 	});
 
 	function init(){
+		//add p line height 20px
+		if ($(".address-and-hours").length){
+			$(".address-and-hours").parent("p").css('line-height', '20px');
+			$(".address-and-hours").parent("p").css('margin-bottom', '0');
+		}
+
 		//arrow in homepage
 		var arrow = $(".wrapper-arrow img")
 		TweenMax.fromTo(arrow, 2, {y:-20,ease:Circ},{y:20,repeatDelay:1, ease:Circ, repeat:-1,})
