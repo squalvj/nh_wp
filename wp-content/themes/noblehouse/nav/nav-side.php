@@ -12,12 +12,7 @@
             <h2>Contact Us</h2>
             <button id="back-contact"><img src="<?= get_template_directory_uri(); ?>/assets/img/arrow.svg"></button>
             <form method="post" action="<?= get_page_link(134); ?>">
-                <input type="text" name="name" placeholder="Name">
-                <input type="email" name="email" placeholder="E-mail">
-                <input type="text" name="company" placeholder="Company">
-                <input type="text" name="address" placeholder="Address">
-                <textarea name="msg" rows="5" placeholder="Requirement"></textarea>
-                <button class="btn-more" type="submit">SUBMIT</button>
+                <?= do_shortcode('[contact-form-7 id="140" title="Contact form 1"]') ?>
             </form>
         </div>
         <ul class="menu-ul">

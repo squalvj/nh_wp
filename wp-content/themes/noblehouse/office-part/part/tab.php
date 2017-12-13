@@ -17,6 +17,6 @@
     </div>
 </div>
 <div class="item-right img-right">
-    <img src="<?= $img; ?>">
+    <img class="tab-img" src="<?= $img; ?>">
     <img class="loader" src="<?= get_template_directory_uri(); ?>/assets/img/loader/Eclipse.svg">
 </div>

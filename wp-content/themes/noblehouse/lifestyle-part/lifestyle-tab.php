@@ -37,7 +37,7 @@
                         <a href="<?= site_url() ?>/restaurant">MORE RESTAURANTS ></a>
                     </div>
                 </div>
-                <div class="item-right img-right">
+                <div class="item-right">
                    
                 </div>
             </div>
