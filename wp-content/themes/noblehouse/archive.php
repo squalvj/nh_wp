@@ -59,12 +59,12 @@ endif;
 		</div>
 		<?php get_template_part( 'nav/nav', 'pagination' ); ?>
 	    <div class="wrapper-archive">
-			<div class="wrapper-year scrollbar-rail">
+			<div class="wrapper-year <?php if(is_firefox($version) == false) { ?>scrollbar-rail <?php }; ?>">
 				<div class="group">
 					<?= getNavbarArchive(); ?>
 				</div>
 			</div>
-			<div class="wrapper-article scrollbar-rail">
+			<div class="wrapper-article <?php if(is_firefox($version) == false) { ?>scrollbar-rail <?php }; ?>">
 				<?php if ($content[0]['gallery']['gallery']): ?>
 				<div class="wrapper-gallery-article">
 					<div class="owl-carousel owl-theme">

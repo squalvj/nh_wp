@@ -55,7 +55,7 @@ endif;
 		</div>
 
 	    <div class="wrapper-archive">
-			<div class="wrapper-year scrollbar-rail">
+			<div class="wrapper-year <?php if(is_firefox($version) == false) { ?>scrollbar-rail <?php }; ?>">
 				<div class="group">
 					<?= getNavbarSingle(); ?>
 				</div>
@@ -64,7 +64,7 @@ endif;
             
         	<?php if ( have_posts() ) : ?>
         	<?php while( have_posts() ) : the_post(); $field = get_fields();?>
-			<div class="wrapper-article scrollbar-rail">
+			<div class="wrapper-article <?php if(is_firefox($version) == false) { ?>scrollbar-rail <?php }; ?>">
 				<?php if ($field['gallery']): ?>
 					<div class="wrapper-gallery-article">
 						<div class="owl-carousel owl-theme">
