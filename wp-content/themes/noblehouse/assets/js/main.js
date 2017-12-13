@@ -455,10 +455,14 @@ $(document).ready(function() {
 		var name = $(this).data('image')
 		var tl = new TimelineMax();
 		var loader = $(this).closest('.item-left').siblings('.item-right').find('.loader')
-		$(img).attr('src', name);
+		img.attr('src', '...');
+		img.attr('src', name);
 		tl.set(loader, {display:'block'})
 		.set(loader,{opacity:1})
-		$(img).on('load', function(){
+		setTimeout(function(){
+			$.fn.fullpage.reBuild();
+		},10)
+		img.on('load', function(){
 			img.css('opacity', '1');
 			$(loader).css('display', 'none');
 			setTimeout(function(){
@@ -534,6 +538,9 @@ $(document).ready(function() {
 				$(this).addClass('active')
 			}
 		});
+		setTimeout(function(){
+ 			$.fn.fullpage.reBuild();
+ 		},100)
 	});
 
 	$(".bullet-nav").on('click', '.bullet-child', function(event) {

@@ -216,7 +216,7 @@ textarea
 	width 0
 	height 100%
 	top 0
-	z-index 10
+	z-index 11
 	-webkit-transition: all 1s ease
 	-moz-transition: all 1s ease
 	-ms-transition: all 1s ease
@@ -1304,7 +1304,9 @@ textarea
 	// 	width 1300px
 @media (max-width: 992px)	
 	.bullet-nav
-		visibility hidden	
+		visibility hidden
+	.container-accordion .wrapper-group-accordion .wrapper-item-accordion p
+		width 40%	
 @media (max-width: 767px)
 	.header-accordions
 		top 40% !important
@@ -1463,6 +1465,8 @@ textarea
 				.item-right
 					margin-top 50px
 @media (max-width: 576px)
+	.header-accordions
+		top 25% !important
 	.img-right
 		min-height 200px
 	.footer-archive
@@ -1577,6 +1581,7 @@ textarea
 			justify-content center
 			position absolute
 			top 0
+			left 0
 			height 100vh
 			width 100%
 	.side-nav
@@ -1639,9 +1644,13 @@ textarea
 	.items-left-right
 		// margin 80px 0 120px
 		margin 80px 0 0
+		h2
+			font-size 32px
 		.item-right
 			margin-bottom 50px
 		&.invert,&.putih
+			h2
+				font-size 32px
 			.tab-container
 				margin-left -5px
 				li
@@ -1664,11 +1673,13 @@ textarea
 			//overflow auto
 			max-height 100% !important
 			overflow: -moz-scrollbars-none !important
-	.container-accordion .wrapper-group-accordion .wrapper-item-accordion p
-		width 50%
+	.container-accordion .wrapper-group-accordion .wrapper-item-accordion.active p
+		width 35%
 	.wrapper-group-accordion
 		overflow hidden
 	@media (max-width: 576px)
+		.container-accordion .wrapper-group-accordion .wrapper-item-accordion.active p
+			width 100%
 		#fullpage-news
 			.container-accordion
 				margin-bottom: 0;
