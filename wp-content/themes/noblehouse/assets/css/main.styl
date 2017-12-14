@@ -767,6 +767,7 @@ textarea
 					padding 0 15px
 					margin 0
 					transition-delay 1s
+					display block
 				.scroll-element
 					opacity 0
 					transition all .25s ease
@@ -794,6 +795,7 @@ textarea
 						position absolute
 						transition-delay 0s
 						opacity 0
+						display none
 					.wrapper-inside-item-accordion
 						overflow auto
 						.header-accordion
@@ -1543,6 +1545,8 @@ div.wpcf7-mail-sent-ok
 						.wrapper-inside-item-accordion
 							overflow auto
 							z-index 11
+							p
+								width 90%
 					&.shrink
 						padding 0
 					.wrapper-inside-item-accordion
@@ -1662,6 +1666,9 @@ div.wpcf7-mail-sent-ok
 				li
 					padding 5px
 @media (max-height: 542px)
+	.scroll-content.scroll-scrolly_visible
+		margin-left 0
+		left 0
 	.container-accordion
 		margin-top 50px
 		margin-bottom 0
