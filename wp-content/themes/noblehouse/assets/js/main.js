@@ -494,9 +494,11 @@ $(document).ready(function() {
 		}
 		parent.find('.wrapper-group-accordion .wrapper-item-accordion').addClass('shrink')
 		$(this).removeClass('shrink').addClass('active')
-		setTimeout(function(){
-			jQuery(wrapper).scrollbar();
-		}, 1000)
+		if (w > 576){
+			setTimeout(function(){
+				jQuery(wrapper).scrollbar();
+			}, 1000)
+		}
 	});
 
 	$(".back-accordion").click(function(event) {

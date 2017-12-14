@@ -787,6 +787,7 @@ textarea
 						line-height: 35px;
 					p
 						width 100%
+						margin-bottom 0
 				&.active
 					padding 10vh calc(100% - 600px) 10vh 100px
 					.scroll-element
@@ -1540,19 +1541,19 @@ div.wpcf7-mail-sent-ok
 					z-index 10
 					padding 5vh 0
 					&.active
-						height 100vh
+						height auto
 						//height 100%
 						.wrapper-inside-item-accordion
-							overflow auto
-							z-index 11
-							p
-								width 90%
+							overflow unset
+							z-index 21
+							max-height unset
+							height auto
 					&.shrink
 						padding 0
 					.wrapper-inside-item-accordion
 						z-index 1
-						max-height 80vh !important
-						//overflow hidden !important
+						//max-height 80vh !important
+						overflow hidden 
 		
 	.tab-type-content
 		margin-bottom 50px

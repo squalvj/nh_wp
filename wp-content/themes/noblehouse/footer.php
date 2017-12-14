@@ -30,7 +30,7 @@
 		<script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/greensock-js/TweenMax.min.js"></script>
 		<script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/owl/dist/owl.carousel.min.js"></script>
 		<script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/jquery.scrollbar.min.js"></script>
-		<script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/main.js"></script>
+		<script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/main.js?version=1"></script>
 
 		<?php wp_footer(); ?>
 	</body>
