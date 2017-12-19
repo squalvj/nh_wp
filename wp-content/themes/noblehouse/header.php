@@ -13,7 +13,7 @@
     <?php } ?>
     <link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/assets/js/owl/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/assets/js/owl/dist/assets/owl.theme.default.min.css">
-    <link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/assets/css/main.css?version=4">
+    <link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/assets/css/main.css?version=5">
     <?php wp_head(); ?>
   </head>
   <body <?php body_class(); ?>>

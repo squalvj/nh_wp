@@ -4,7 +4,7 @@
     <ul class="tab-container nav nav-pills">
         <?php $rows = get_field('tab_type'); ?>
         <?php if($rows): $i2 = 1; foreach($rows as $key => $row): if ($key == 0)$img=$row['image'];?>
-            <li class="<?php echo '', ($i2 == 1 ? 'active' : ''); ?>"><a class="pil" data-toggle="pill" data-image="<?= $row['image'] ?>" data-target="#<?= trimSpace($row['header_tab']); ?>"><?= $row['header_tab']; ?></a></li>
+            <li class="<?php echo '', ($i2 == 1 ? 'active' : ''); ?>"><a class="<?php if ($row['image'] != ''){ ?>pil <?php } ?>" data-toggle="pill" data-image="<?= $row['image'] ?>" data-target="#<?= trimSpace($row['header_tab']); ?>"><?= $row['header_tab']; ?></a></li>
         <?php $i2++; endforeach; endif;?>
     </ul>
     <div class="tab-content">
@@ -17,6 +17,8 @@
     </div>
 </div>
 <div class="item-right img-right">
-    <img class="tab-img" src="<?= $img; ?>">
-    <img class="loader" src="<?= get_template_directory_uri(); ?>/assets/img/loader/Eclipse.svg">
+    <?php if($img != ''): ?>
+        <img class="tab-img" src="<?= $img; ?>">
+        <img class="loader" src="<?= get_template_directory_uri(); ?>/assets/img/loader/Eclipse.svg">
+    <?php endif; ?>
 </div>
