@@ -451,6 +451,7 @@ $(document).ready(function() {
 
 	$(".pil").click(function(event) {
 		var img = $(this).closest('.item-left').siblings('.item-right').find('img.tab-img')
+		var a = $(this).closest('.item-left').siblings('.item-right').find('.a-img')
 		img.css('opacity', '0');
 		var name = $(this).data('image')
 		var tl = new TimelineMax();
@@ -466,6 +467,7 @@ $(document).ready(function() {
 			TweenMax.fromTo(img, 1, {opacity:0, y:-10}, {opacity:1, y:0,delay:.3})
 			//img.css('opacity', '1');
 			$(loader).css('display', 'none');
+			a.attr('href', name);
 			setTimeout(function(){
 				$.fn.fullpage.reBuild();
 			},10)
@@ -693,6 +695,22 @@ $(document).ready(function() {
 				items:1
 			});
 		}
+		$('a[data-rel=lightcase]').lightcase({
+			fullscreenModeForMobile:true,
+			onFinish : {
+				quz: function() {
+					$.fn.fullpage.setMouseWheelScrolling(false);
+	    			$.fn.fullpage.setAllowScrolling(false);
+				}
+			},
+			// Would be called when aborting lightcase
+			onClose : {
+				quux: function() {
+					$.fn.fullpage.setMouseWheelScrolling(true);
+	    			$.fn.fullpage.setAllowScrolling(true);
+				}
+			},
+		});
 	}
 	init();
 });
