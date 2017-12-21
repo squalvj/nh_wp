@@ -697,6 +697,12 @@ $(document).ready(function() {
 		}
 		$('a[data-rel=lightcase]').lightcase({
 			fullscreenModeForMobile:true,
+			//forceWidth:true,
+			swipe: true,
+			//forceWidth:true,
+			//maxWidth:1000,
+			disableShrink: w > 557 ? true : false,
+			shrinkFactor:1,
 			onFinish : {
 				quz: function() {
 					$.fn.fullpage.setMouseWheelScrolling(false);

@@ -19,7 +19,7 @@
 <div class="item-right img-right">
     <?php if($img != ''): ?>
 
-        <a class="a-img" href="<?= $img; ?>" data-rel="lightcase">  <img class="image-link tab-img" href="<?= $img; ?>" src="<?= $img; ?>"> </a>
+        <a class="a-img" href="<?= $img; ?>"  data-rel="lightcase">  <img class="image-link tab-img" href="<?= $img; ?>" src="<?= $img; ?>"> </a>
         <img class="loader" src="<?= get_template_directory_uri(); ?>/assets/img/loader/Eclipse.svg">
     <?php endif; ?>
 </div>

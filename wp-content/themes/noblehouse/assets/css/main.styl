@@ -543,7 +543,7 @@ textarea
 					margin: 0;
 		.tab-content
 			width 100%
-			min-height 150px
+			min-height 120px
 			p
 				color $black
 				text-align left
@@ -1304,12 +1304,13 @@ div.wpcf7-validation-errors
 div.wpcf7-mail-sent-ok
 	background white
 .tab-img
-	width 100%
+	width auto !important
+	max-width 100%
 	display block
-	height auto
 .a-img
 	width 100% !important
-	display block !important
+	display flex !important
+	justify-content center
 // -------------------------------------------------------------------------------------------------------------------------------------
 @media (min-width: 1200px)
 	.items-left-right.invert.putih 
